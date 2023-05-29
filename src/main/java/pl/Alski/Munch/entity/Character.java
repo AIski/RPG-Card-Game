@@ -1,10 +1,19 @@
 package pl.Alski.Munch.entity;
 
+import jakarta.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import pl.Alski.Munch.entity.Items.Armour;
 import pl.Alski.Munch.entity.Items.Boots;
 import pl.Alski.Munch.entity.Items.Helmet;
 import pl.Alski.Munch.entity.Items.Weapon;
 
+
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class Character {
 
     private int level;
