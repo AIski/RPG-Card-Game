@@ -8,7 +8,5 @@ import java.util.List;
 @Service
 public interface QueueService {
 
-    void rollPlayersOrder(List<Player> players);
-
     Player getNextPlayerInQueue();
 }

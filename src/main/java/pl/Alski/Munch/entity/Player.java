@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pl.Alski.Munch.cards.Card;
 
 import java.util.List;
 
@@ -18,6 +19,9 @@ public class Player {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    private String name;
+
+    @OneToMany
     private Character character;
 
     private List<Card> hand;

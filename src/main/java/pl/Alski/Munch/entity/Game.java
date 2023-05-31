@@ -1,15 +1,28 @@
 package pl.Alski.Munch.entity;
 
-import pl.Alski.Munch.entity.DoorCards.DoorCard;
-import pl.Alski.Munch.service.Croupier;
+import jakarta.persistence.*;
+import lombok.Data;
+import pl.Alski.Munch.service.GameMasterService;
+
+import pl.Alski.Munch.cards.CroupierService;
 
 import java.util.List;
-import java.util.Stack;
 
+@Entity
+@Data
 public class Game {
-    private List<Player> players;
-    private Stack<DoorCard> doorCardStack;
-    private Stack<TreasureCard> treasureCardStack;
-    private Croupier croupier;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Long id;
 
+    private List<Player> players;
+    private CroupierService croupier;
+
+
+    private GameMasterService gameMaster;
+
+    public void play(){
+        gameMaster.playTheGame();
+    }
 }
