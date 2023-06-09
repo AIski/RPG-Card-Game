@@ -11,18 +11,18 @@ import java.util.Stack;
 @AllArgsConstructor
 public class SneakAPeakIntoCardStackService {
 
-    CroupierService croupierService;
+    CardServiceImpl cardService;
 
     Stack<DoorCard> sneakPeakIntoDoorCardStack() {
-        return croupierService.getDoorCardsStack();
+        return cardService.getDoorCardsStack();
     }
     Stack<TreasureCard> sneakPeakIntoTreasureCardsStack() {
-        return croupierService.getTreasureCardsStack();
+        return cardService.getTreasureCardsStack();
     }
     Stack<DoorCard> sneakPeakIntoUsedDoorCardsStack() {
-        return croupierService.getUsedDoorCardsStack();
+        return cardService.getUsedDoorCardsStack();
     }
     Stack<TreasureCard> sneakPeakIntoUsedTreasureCardsStack() {
-        return croupierService.getUsedTreasureCardsStack();
+        return cardService.getUsedTreasureCardsStack();
     }
 }

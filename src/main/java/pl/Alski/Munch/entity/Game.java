@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import pl.Alski.Munch.service.GameMasterService;
 
-import pl.Alski.Munch.cards.CroupierService;
+import pl.Alski.Munch.cards.CardServiceImpl;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public class Game {
     private Long id;
 
     private List<Player> players;
-    private CroupierService croupier;
+    private CardServiceImpl croupier;
 
 
     private GameMasterService gameMaster;

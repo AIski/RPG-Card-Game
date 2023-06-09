@@ -1,6 +1,6 @@
 package pl.Alski.Munch.gameCreation.services;
 
-import pl.Alski.Munch.cards.CroupierService;
+import pl.Alski.Munch.cards.CardServiceImpl;
 import pl.Alski.Munch.gameCreation.GameCreationRequest;
 import pl.Alski.Munch.entity.Game;
 import pl.Alski.Munch.entity.Player;
@@ -11,7 +11,7 @@ public class GameCreateServiceImpl implements GameCreateService {
 
     private int gameSize;
     private  List<Player> players;
-    private CroupierService croupier;
+    private CardServiceImpl cardService;
     private GameDeterminePlayersOrderService determinePlayersOrderService;
     private CharacterCreateService characterCreateService;
 
@@ -32,6 +32,9 @@ public class GameCreateServiceImpl implements GameCreateService {
     }
 
     private void setCards() {
+        cardService.loadDoorCardsFromRepository();
+        cardService.shuffleDoorCardsStack();
+        cardService.shuffleTreasureCardsStack();
     }
 
     private void createCharacters() {
