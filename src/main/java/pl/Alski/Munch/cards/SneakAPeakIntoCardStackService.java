@@ -11,7 +11,7 @@ import java.util.Stack;
 @AllArgsConstructor
 public class SneakAPeakIntoCardStackService {
 
-    CardServiceImpl cardService;
+    CardServiceFacadeImpl cardService;
 
     Stack<DoorCard> sneakPeakIntoDoorCardStack() {
         return cardService.getDoorCardsStack();

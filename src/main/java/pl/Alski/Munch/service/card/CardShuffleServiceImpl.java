@@ -1,4 +1,4 @@
-package pl.Alski.Munch.service;
+package pl.Alski.Munch.service.card;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,10 +14,10 @@ public class CardShuffleServiceImpl implements CardShuffleService {
     private Random random;
 
     @Override
-    public Stack<Card> shuffle(Stack<Card> cardsStack) {
+    public <T extends Card> Stack<T> shuffle(Stack<T> cardsStack) {
         for (int i = cardsStack.size() - 1; i > 0; i--) {
             int j = random.nextInt(i + 1);
-            Card tempCard = cardsStack.get(i);
+            T tempCard = cardsStack.get(i);
             cardsStack.set(i, cardsStack.get(j));
             cardsStack.set(j, tempCard);
         }

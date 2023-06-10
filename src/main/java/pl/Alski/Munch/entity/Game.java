@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import pl.Alski.Munch.service.GameMasterService;
 
-import pl.Alski.Munch.cards.CardServiceImpl;
+import pl.Alski.Munch.cards.CardServiceFacadeImpl;
 
 import java.util.List;
 
@@ -17,12 +17,20 @@ public class Game {
     private Long id;
 
     private List<Player> players;
-    private CardServiceImpl croupier;
 
+    @OneToOne
+    private CardServiceFacadeImpl cardService;
 
+    @OneToOne
     private GameMasterService gameMaster;
 
-    public void play(){
+    private Boolean isFinished = false;
+
+    @ManyToOne
+    @JoinColumn(name = "winner_id")
+    private Player winner;
+
+    public void play() {
         gameMaster.playTheGame();
     }
 }
