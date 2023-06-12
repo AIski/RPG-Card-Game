@@ -2,9 +2,9 @@ package pl.Alski.Munch.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import pl.Alski.Munch.service.GameMasterService;
+import pl.Alski.Munch.GameMasterService;
 
-import pl.Alski.Munch.cards.CardServiceFacadeImpl;
+import pl.Alski.Munch.cards.service.CardServiceFacadeImpl;
 
 import java.util.List;
 

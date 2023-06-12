@@ -1,4 +1,7 @@
 package pl.Alski.Munch.cards.doorCards;
 
-public interface Curse {
+import pl.Alski.Munch.entity.Event;
+
+public class Curse extends DoorCard{
+    Event event;
 }
