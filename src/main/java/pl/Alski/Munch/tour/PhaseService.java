@@ -17,7 +17,7 @@ public interface PhaseService {
         // monster fight
     //3. Search the room
     // If you didn't fight monster so far, you can take another door card, upside down, and take it on your hand.
-    // if you fought a monste but run away, you cannot do this round
+    // if you fought a monster but run away, you cannot do this round
     //4. Show mercy
     // If you got too many items on your hand, play these you want at this point.
     // else you must give away the cards over the hand limit to player with lowest level.

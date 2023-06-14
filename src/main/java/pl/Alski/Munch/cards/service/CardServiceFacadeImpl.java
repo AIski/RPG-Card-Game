@@ -3,6 +3,7 @@ package pl.Alski.Munch.cards.service;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.stereotype.Service;
+import pl.Alski.Munch.cards.Card;
 import pl.Alski.Munch.cards.DAO.CardRepository;
 import pl.Alski.Munch.cards.doorCards.DoorCard;
 import pl.Alski.Munch.cards.treasureCards.TreasureCard;
@@ -17,7 +18,7 @@ import java.util.Stack;
 @Service
 @Getter
 @AllArgsConstructor
-public class CardServiceFacadeImpl {
+public class CardServiceFacadeImpl implements CardServiceFacade{
 
     private final CardRepository cardRepository;
     private final CardShuffleService shuffleService;
@@ -49,6 +50,26 @@ public class CardServiceFacadeImpl {
     public void dealNextTreasureCard(Player player) {
         TreasureCard nextCard = treasureCardsStack.pop();
         dealCardService.dealCardToPlayer(nextCard, player);
+    }
+
+    @Override
+    public <T extends Card> T dealNextDoorCardOnTable() {
+        return (T) doorCardsStack.pop();
+    }
+
+    @Override
+    public <T extends Card> T dealNextTreasureCardOnTable() {
+        return (T) treasureCardsStack.pop();
+    }
+
+    @Override
+    public <T extends Card> void discardCard(T card) {
+         if (card instanceof DoorCard) {
+             usedDoorCardsStack.add((DoorCard) card);
+         }
+         else {
+             usedTreasureCardsStack.add((TreasureCard) card);
+         }
     }
 
 

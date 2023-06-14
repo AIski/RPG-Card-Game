@@ -3,13 +3,14 @@ package pl.Alski.Munch.cards.doorCards.fight;
 import org.springframework.stereotype.Service;
 import pl.Alski.Munch.cards.doorCards.Monster;
 import pl.Alski.Munch.entity.Action;
+import pl.Alski.Munch.entity.Player;
 import pl.Alski.Munch.entity.Request;
 import pl.Alski.Munch.cards.treasureCards.items.Item;
 
 @Service
 public interface FightService {
 
-    Fight startFight();
+    Fight startFight(Player player, Monster monster);
 
     Request requestForBackup(Fight fight);
 
@@ -27,4 +28,5 @@ public interface FightService {
 
     void useExtraAction(Item item, Action action);
 
+    void removeMonsterFromTheFight(Monster monster);
 }

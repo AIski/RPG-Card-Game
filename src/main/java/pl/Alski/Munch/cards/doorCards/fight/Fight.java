@@ -9,27 +9,19 @@ import java.util.List;
 @Data
 public class Fight {
 
-
     private long id;
     private Character character;
-    private List<java.lang.Character> helpingCharacters;
+    //add this one later.
+//    private List<java.lang.Character> helpingCharacters;
     private List<Monster> monsters;
-
+    private boolean isWon = false;
 
 
     public Fight(Character character, Monster monster){
         this.character = character;
         this.monsters.add(monster);
     }
-    public Fight(Character character, Monster firstMonster, Monster secondMonster){
-        this(character, firstMonster);
-        this.monsters.add(secondMonster);
-    }
 
-    public Fight(Character character, Monster firstMonster, Monster secondMonster, Monster thirdMonster){
-        this(character, firstMonster, secondMonster);
-        this.monsters.add(thirdMonster);
-    }
 
 
 }

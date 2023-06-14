@@ -11,8 +11,4 @@ public class DealCardServiceImpl implements DealCardService {
         player.getHand().add(card);
     }
 
-    @Override
-    public <T extends Card> void dealCardOnPlayer(T card, Player player) {
-        card.
-    }
 }
