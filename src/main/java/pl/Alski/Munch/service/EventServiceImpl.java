@@ -2,7 +2,7 @@ package pl.Alski.Munch.service;
 
 import org.springframework.stereotype.Service;
 import pl.Alski.Munch.entity.Event;
-import pl.Alski.Munch.entity.Player;
+import pl.Alski.Munch.player.Player;
 
 @Service
 public class EventServiceImpl implements EventService{

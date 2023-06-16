@@ -8,9 +8,7 @@ import pl.Alski.Munch.cards.DAO.CardRepository;
 import pl.Alski.Munch.cards.doorCards.DoorCard;
 import pl.Alski.Munch.cards.treasureCards.TreasureCard;
 import pl.Alski.Munch.entity.Game;
-import pl.Alski.Munch.entity.Player;
-import pl.Alski.Munch.cards.service.DealCardService;
-import pl.Alski.Munch.cards.service.CardShuffleService;
+import pl.Alski.Munch.player.Player;
 
 import java.util.Stack;
 

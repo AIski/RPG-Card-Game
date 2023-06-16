@@ -1,6 +1,6 @@
 package pl.Alski.Munch.gameCreation.services;
 
-import pl.Alski.Munch.entity.Player;
+import pl.Alski.Munch.player.Player;
 
 import java.util.List;
 

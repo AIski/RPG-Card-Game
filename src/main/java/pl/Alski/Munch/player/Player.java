@@ -1,4 +1,4 @@
-package pl.Alski.Munch.entity;
+package pl.Alski.Munch.player;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

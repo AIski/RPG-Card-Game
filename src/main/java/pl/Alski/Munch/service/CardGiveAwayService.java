@@ -1,10 +1,10 @@
 package pl.Alski.Munch.service;
 
 import org.springframework.stereotype.Service;
+import pl.Alski.Munch.cards.Card;
 import pl.Alski.Munch.player.Player;
 
 @Service
-public interface QueueService {
-
-    Player getNextPlayerInQueue();
+public interface CardGiveAwayService {
+    void giveAway(Card card, Player player);
 }

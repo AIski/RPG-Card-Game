@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.Alski.Munch.gameCreation.GameCreationRequest;
 import pl.Alski.Munch.entity.Game;
-import pl.Alski.Munch.entity.Player;
+import pl.Alski.Munch.player.Player;
 
 import java.util.List;
 

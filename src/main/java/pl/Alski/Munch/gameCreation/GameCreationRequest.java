@@ -1,7 +1,7 @@
 package pl.Alski.Munch.gameCreation;
 
 import lombok.Data;
-import pl.Alski.Munch.entity.Player;
+import pl.Alski.Munch.player.Player;
 
 import java.util.List;
 

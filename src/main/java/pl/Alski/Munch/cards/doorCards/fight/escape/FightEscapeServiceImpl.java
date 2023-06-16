@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import pl.Alski.Munch.cards.doorCards.Monster;
 import pl.Alski.Munch.cards.doorCards.fight.Fight;
 import pl.Alski.Munch.cards.doorCards.fight.FightService;
-import pl.Alski.Munch.entity.Player;
+import pl.Alski.Munch.player.Player;
 import pl.Alski.Munch.service.ConditionService;
 import pl.Alski.Munch.service.DiceService;
 import pl.Alski.Munch.service.EventService;

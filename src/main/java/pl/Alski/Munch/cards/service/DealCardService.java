@@ -2,8 +2,7 @@ package pl.Alski.Munch.cards.service;
 
 import org.springframework.stereotype.Service;
 import pl.Alski.Munch.cards.Card;
-import pl.Alski.Munch.entity.Event;
-import pl.Alski.Munch.entity.Player;
+import pl.Alski.Munch.player.Player;
 
 @Service
 public interface DealCardService {

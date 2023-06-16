@@ -2,7 +2,7 @@ package pl.Alski.Munch.gameCreation.services;
 
 
 import org.springframework.stereotype.Service;
-import pl.Alski.Munch.entity.Player;
+import pl.Alski.Munch.player.Player;
 
 @Service
 public class CharacterCreateServiceImpl implements CharacterCreateService{

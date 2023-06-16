@@ -1,6 +1,6 @@
 package pl.Alski.Munch.service;
 
-import pl.Alski.Munch.entity.Player;
+import pl.Alski.Munch.player.Player;
 
 import java.util.concurrent.locks.Condition;
 

@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import pl.Alski.Munch.cards.doorCards.Monster;
 import pl.Alski.Munch.cards.treasureCards.items.Item;
 import pl.Alski.Munch.entity.Action;
-import pl.Alski.Munch.entity.Player;
+import pl.Alski.Munch.player.Player;
 import pl.Alski.Munch.entity.Request;
 
 @Service
