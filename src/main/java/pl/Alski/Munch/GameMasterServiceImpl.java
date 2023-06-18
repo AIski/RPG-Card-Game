@@ -3,7 +3,6 @@ package pl.Alski.Munch;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import pl.Alski.Munch.GameMasterService;
 import pl.Alski.Munch.entity.Game;
 import pl.Alski.Munch.gameCreation.services.GameCreateService;
 import pl.Alski.Munch.service.DiceService;
@@ -28,7 +27,7 @@ public class GameMasterServiceImpl implements GameMasterService {
         while (!game.getIsFinished()) {
             for (int i = 0; i < game.getPlayers().size(); i++) {
                var tempPlayer = queueService.getNextPlayerInQueue();
-               tourService.startPlayerTour(tempPlayer);
+               tourService.playPlayerTour(tempPlayer);
             }
         }
     }

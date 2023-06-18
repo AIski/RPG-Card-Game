@@ -9,8 +9,7 @@ import pl.Alski.Munch.player.Player;
 public class Tour {
     private Player player;
     TourPhase phase;
+    TourStatus status;
     private boolean foughtAMonster = false;
-    private boolean phaseCompleted = false;
-
 
 }

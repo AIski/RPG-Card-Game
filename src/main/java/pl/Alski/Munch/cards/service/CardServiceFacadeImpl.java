@@ -2,6 +2,8 @@ package pl.Alski.Munch.cards.service;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import pl.Alski.Munch.cards.Card;
 import pl.Alski.Munch.cards.DAO.CardRepository;
@@ -9,6 +11,7 @@ import pl.Alski.Munch.cards.doorCards.DoorCard;
 import pl.Alski.Munch.cards.treasureCards.TreasureCard;
 import pl.Alski.Munch.entity.Game;
 import pl.Alski.Munch.player.Player;
+import pl.Alski.Munch.service.TourPhaseServiceImpl;
 
 import java.util.Stack;
 
@@ -21,6 +24,8 @@ public class CardServiceFacadeImpl implements CardServiceFacade{
     private final CardRepository cardRepository;
     private final CardShuffleService shuffleService;
     private final DealCardService dealCardService;
+    private final static Logger logger = LoggerFactory.getLogger(CardServiceFacadeImpl.class);
+
 
     private Game game;
     private Stack<DoorCard> doorCardsStack;
@@ -51,13 +56,17 @@ public class CardServiceFacadeImpl implements CardServiceFacade{
     }
 
     @Override
-    public <T extends Card> T dealNextDoorCardOnTable() {
-        return (T) doorCardsStack.pop();
+    public <T extends DoorCard> T dealNextDoorCardOnTable() {
+        T card = (T) doorCardsStack.pop();
+        logger.info("Rolled + " + card.toString());
+        return card;
     }
 
     @Override
-    public <T extends Card> T dealNextTreasureCardOnTable() {
-        return (T) treasureCardsStack.pop();
+    public <T extends TreasureCard> T dealNextTreasureCardOnTable() {
+        T card = (T) treasureCardsStack.pop();
+        logger.info("Rolled + " + card.toString());
+        return card;
     }
 
     @Override

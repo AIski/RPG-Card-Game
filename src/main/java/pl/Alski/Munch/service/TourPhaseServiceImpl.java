@@ -12,100 +12,54 @@ import pl.Alski.Munch.cards.doorCards.fight.Fight;
 import pl.Alski.Munch.cards.doorCards.fight.FightService;
 import pl.Alski.Munch.cards.doorCards.fight.escape.FightEscapeService;
 import pl.Alski.Munch.cards.service.CardServiceFacade;
+import pl.Alski.Munch.cards.service.DealCardService;
 import pl.Alski.Munch.player.Player;
 import pl.Alski.Munch.tour.Tour;
 import pl.Alski.Munch.tour.TourPhase;
+import pl.Alski.Munch.tour.TourStatus;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
 public class TourPhaseServiceImpl implements TourPhaseService {
 
+    private TourFirstPhaseService firstPhaseService;
+    private TourSecondPhaseService secondPhaseService;
+    private TourThirdPhaseService thirdPhaseService;
+    private TourFourthPhaseService fourthPhaseService;
+
     private CardServiceFacade cardService;
     private FightService fightService;
     private CharacterLevelPromotionService promotionService;
     private final static Logger logger = LoggerFactory.getLogger(TourPhaseServiceImpl.class);
-    private ConditionService conditionService;
     private FightEscapeService escapeService;
     private HandValidatorService handValidatorService;
+    private EventService eventService;
+    private DealCardService dealCardService;
 
     @Override
-    public void startFirstPhase(Tour tour) {
-        tour.setPhase(TourPhase.ASK_FOR_TROUBLE);
-        DoorCard currentDoorCard = cardService.dealNextDoorCardOnTable();
-        logger.info(tour.getPlayer().getName() + " rolled + " + currentDoorCard.toString());
-        Player currentPlayer = tour.getPlayer();
-        if (currentDoorCard instanceof Monster) {
-            Fight fight = fightService.startFight(currentPlayer, (Monster) currentDoorCard);
-            if (fight.isWon()) {
-                //check player is eligible for promotion
-                // if so, promote him
-                //check player is eligible for loot, if so, call the loot
+    public Tour playFirstPhase(Tour tour) {
 
-                // TODO
-
-                cardService.discardCard(currentDoorCard);
-            } else {
-                boolean escapeResult = escapeService.tryToEscapeFromAllMonsters(currentPlayer, fight);
-                if (escapeResult) {
-                    cardService.discardCard(currentDoorCard);
-                }
-                //            // if you escape, you dont get loot or level
-                //            // if you fail to escape, you face the monster miserable end.
-            }
-            tour.setFoughtAMonster(true);
+        return firstPhaseService.playFirstPhase(tour);
         }
-        if (currentDoorCard instanceof Curse) {
 
-            // TODO this.
+        @Override
+        public Tour playSecondPhase(Tour tour){
+            return secondPhaseService.playSecondPhase(tour);
         }
-        logger.
-        tour.setPhaseCompleted(true);
 
-    }
-
-    @Override
-    public void startSecondPhase(Tour tour) {
-        tour.setPhase(TourPhase.ASK_FOR_TROUBLE);
-        List<Card> monsterList = tour.getPlayer().getHand().stream()
-                .filter(a -> a instanceof Monster)
-                .collect(Collectors.toList());
-        // if player wants, he can fight one of his monsters
-        //TODO: this code. need to send request to player, get response, proceed with fight if necessary
-        boolean playerResponse = playerCommunicationService.askPlayer("Do Ask For Trouble? (Do you want to fight any of the monsters from your hand?)");
-         if (playerResponse) {
-             playerCommunicationService.askPlayer("Which monster do you want to fight? ", monsterList);
-            // if player picks a monster, set the fight,
-             // else return
-             tour.setPhase;
-         }
-    }
-
-    @Override
-    public void startThirdPhase(Tour tour) {
-        tour.setPhase(TourPhase.SEARCH_THE_ROOM);
-        //Ask player, if he want to pick extra door card.
-
-        boolean playerResponse = playerCommunicationService.askPlayer()
-        cardService.dealNextDoorCard(tour.getPlayer());
-    }
-
-    @Override
-    public void startFourthPhase(Tour tour) {
-        // If you got too many items on your hand, play these you want at this point.
-        // else you must give away the cards over the hand limit to player with lowest level.
-        // if there are players with same, lowest level, you split the cards, as fair as possible.
-        // if you are the lowest level, throw away extra cards.
-        boolean playerHasTooManyCards =!handValidatorService.validateHand(tour.getPlayer())
-        while(playerHasTooManyCards){
-            playerCommunicationService.askPlayer("You have too many cards on your hand." +
-                    , monsterList);
-
-
+        @Override
+        public Tour playThirdPhase(Tour tour){
+            return thirdPhaseService.playThirdPhase(tour);
         }
+
+        @Override
+        public Tour playFourthPhase(Tour tour){
+           return fourthPhaseService.playFourthPhase(tour);
+        }
+
+
     }
-
-
-}

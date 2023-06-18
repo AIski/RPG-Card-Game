@@ -5,9 +5,10 @@ import pl.Alski.Munch.tour.Tour;
 
 @Service
 public interface TourPhaseService {
-    public void startFirstPhase(Tour player);
-    public void startSecondPhase(Tour tour);
-    public void startThirdPhase(Tour tour);
-    public void startFourthPhase(Tour tour);
+    public Tour playFirstPhase(Tour player);
+    public Tour playSecondPhase(Tour tour);
+    public Tour playThirdPhase(Tour tour);
+    public Tour playFourthPhase(Tour tour);
 
 }
+
