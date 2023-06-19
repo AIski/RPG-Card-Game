@@ -13,8 +13,33 @@ public class FightServiceImpl implements FightService {
     public Fight startFight(Player player, Monster monster) {
 
         /// TODO: // HERE comes the fight code. result is the outcome of the fight.
-        return Fight;
-    }
+        // TODO: WE need to rework this, use sub-services to do everything inside this service including:
+        // TODO: Fight logic + player moves
+        // TODO: - promotion service
+        // TODO: - escape service
+        // TODO: - loot service.
+
+            Fight fight = fightService.startFight(currentPlayer, monster);
+            if (fight.isWon()) {
+                //check player is eligible for promotion
+                // if so, promote him
+                //check player is eligible for loot, if so, call the loot
+
+                // TODO
+
+                cardService.discardCard(monster);
+            } else {
+                boolean escapeResult = escapeService.tryToEscapeFromAllMonsters(currentPlayer, fight);
+                if (escapeResult) {
+                    cardService.discardCard(monster);
+                }
+                //TODO: THIS CODE
+                //            // if you escape, you dont get loot or level
+                //            // if you fail to escape, you face the monster miserable end.
+            }
+
+
+        }
 
     @Override
     public Request requestForBackup(Fight fight) {

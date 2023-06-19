@@ -16,7 +16,7 @@ public interface PhaseService {
         // if you didn't fight a monster on phase one, you can pick one of your hand to fight.
         // monster fight
     //3. Search the room
-    // If you didn't fight monster so far, you can take another door card, upside down, and take it on your hand.
+    // If you didn't fight monster so far, you can take another door card, and take it on your hand  without showing it.
     // if you fought a monster but run away, you cannot do this round
     //4. Show mercy
     // If you got too many items on your hand, play these you want at this point.

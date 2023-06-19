@@ -15,30 +15,28 @@ public class TourServiceImpl implements TourService {
     private final static Logger logger = LoggerFactory.getLogger(TourServiceImpl.class);
     private TourPhaseService tourService;
     private HandValidatorService handService;
+    private PlayerCommunicationService communicationService;
 
 
     @Override
     public Tour playPlayerTour(Player player) {
         Tour tour = new Tour(player, null, null, false);
-
         logger.info(player.getName() + " is starting his tour.");
         tour = tourService.playFirstPhase(tour);
 
-        if (canPlaySecondPhase(tour)) {
+        if (canPlaySecondPhase(tour) & checkPlayerReadyForNextRound(player)) {
             logger.info(player.getName() + "  can now start 2nd phase- Ask for trouble.");
             tour = tourService.playSecondPhase(tour);
-        }
-        else logger.info(player.getName() + "  cannot play 2nd phase- Ask for trouble.");
+        } else logger.info(player.getName() + "  cannot play 2nd phase- Ask for trouble.");
 
-        if (canPlayThirdPhase(tour)) {
+        if (canPlayThirdPhase(tour) & checkPlayerReadyForNextRound(player)) {
             logger.info(player.getName() + " didn't fight a monster in this tour yet. He can Search the room.");
             tourService.playThirdPhase(tour);
-        }
-        else  logger.info(player.getName() + "  cannot play 3rd phase- Search the Room.");
-
-        if (haveToPlayFourthPhase(tour)) {
+        } else logger.info(player.getName() + "  cannot play 3rd phase- Search the Room.");
+        if (haveToPlayFourthPhase(tour) & checkPlayerReadyForNextRound(player)) {
             tourService.playFourthPhase(tour);
         }
+        logger.info(player.getName() + " finished his tour.");
         return tour;
     }
 
@@ -58,5 +56,9 @@ public class TourServiceImpl implements TourService {
 
     private boolean haveToPlayFourthPhase(Tour tour) {
         return (tour.getStatus() == TourStatus.FINISHED) && !handService.validateHand(tour.getPlayer());
+    }
+
+    private boolean checkPlayerReadyForNextRound(Player player) {
+        return communicationService.askPlayer(player, "Are you yeady for next phase?");
     }
 }

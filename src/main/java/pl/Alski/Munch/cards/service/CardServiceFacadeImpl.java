@@ -48,10 +48,12 @@ public class CardServiceFacadeImpl implements CardServiceFacade{
 
    public void dealNextDoorCard(Player player) {
         DoorCard nextCard = doorCardsStack.pop();
+        logger.info("Door card was dealt to "+player.getName());
         dealCardService.dealCardToPlayer(nextCard, player);
     }
     public void dealNextTreasureCard(Player player) {
         TreasureCard nextCard = treasureCardsStack.pop();
+        logger.info("Treasure card was dealt to "+player.getName());
         dealCardService.dealCardToPlayer(nextCard, player);
     }
 
