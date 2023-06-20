@@ -1,7 +1,7 @@
 package pl.Alski.Munch.service;
 
 import org.springframework.stereotype.Service;
-import pl.Alski.Munch.character.Character;
+import pl.Alski.Munch.entity.Character;
 
 @Service
 public class CharacterLevelPromotionServiceImpl implements CharacterLevelPromotionService {

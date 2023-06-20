@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import pl.Alski.Munch.cards.Card;
-import pl.Alski.Munch.character.Character;
+import pl.Alski.Munch.entity.Character;
 
 import java.util.List;
 

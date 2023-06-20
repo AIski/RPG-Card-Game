@@ -7,7 +7,7 @@ import pl.Alski.Munch.entity.Game;
 import pl.Alski.Munch.gameCreation.services.GameCreateService;
 import pl.Alski.Munch.service.DiceService;
 import pl.Alski.Munch.service.QueueService;
-import pl.Alski.Munch.service.TourService;
+import pl.Alski.Munch.tour.TourService;
 
 
 @Service

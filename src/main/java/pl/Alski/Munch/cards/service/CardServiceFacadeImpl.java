@@ -11,7 +11,6 @@ import pl.Alski.Munch.cards.doorCards.DoorCard;
 import pl.Alski.Munch.cards.treasureCards.TreasureCard;
 import pl.Alski.Munch.entity.Game;
 import pl.Alski.Munch.player.Player;
-import pl.Alski.Munch.service.TourPhaseServiceImpl;
 
 import java.util.Stack;
 
@@ -23,7 +22,7 @@ public class CardServiceFacadeImpl implements CardServiceFacade{
 
     private final CardRepository cardRepository;
     private final CardShuffleService shuffleService;
-    private final DealCardService dealCardService;
+    private final CardDealService cardDealService;
     private final static Logger logger = LoggerFactory.getLogger(CardServiceFacadeImpl.class);
 
 
@@ -49,12 +48,12 @@ public class CardServiceFacadeImpl implements CardServiceFacade{
    public void dealNextDoorCard(Player player) {
         DoorCard nextCard = doorCardsStack.pop();
         logger.info("Door card was dealt to "+player.getName());
-        dealCardService.dealCardToPlayer(nextCard, player);
+        cardDealService.dealCardToPlayer(nextCard, player);
     }
     public void dealNextTreasureCard(Player player) {
         TreasureCard nextCard = treasureCardsStack.pop();
         logger.info("Treasure card was dealt to "+player.getName());
-        dealCardService.dealCardToPlayer(nextCard, player);
+        cardDealService.dealCardToPlayer(nextCard, player);
     }
 
     @Override

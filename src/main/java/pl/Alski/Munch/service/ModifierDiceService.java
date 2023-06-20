@@ -1,7 +1,7 @@
 package pl.Alski.Munch.service;
 
 import org.springframework.stereotype.Service;
-import pl.Alski.Munch.cards.doorCards.fight.Fight;
+import pl.Alski.Munch.fight.Fight;
 
 @Service
 public interface ModifierDiceService {
