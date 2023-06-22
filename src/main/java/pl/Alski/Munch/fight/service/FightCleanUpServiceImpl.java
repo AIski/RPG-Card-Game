@@ -14,9 +14,12 @@ public class FightCleanUpServiceImpl implements FightCleanUpService{
     CardServiceFacade cardService;
     @Override
     public void clean(FightOutcome fightOutcome) {
+        logger.info("FightCleanUpServiceImpl cleaning up after the fight.");
         for (Monster card:fightOutcome.getMonsters()){
             cardService.discardCard(card);
-            logger.info(card.toString()+ " was moved to uudDoorCardsStack");
+            logger.info(card.toString()+ " was moved to usedDoorCardsStack");
         }
+        logger.info("FightCleanUpServiceImpl finished cleaning after the fight.");
+
     }
 }

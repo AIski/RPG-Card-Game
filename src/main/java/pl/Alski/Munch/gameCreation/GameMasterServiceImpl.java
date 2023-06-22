@@ -1,11 +1,9 @@
-package pl.Alski.Munch;
+package pl.Alski.Munch.gameCreation;
 
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.Alski.Munch.entity.Game;
-import pl.Alski.Munch.gameCreation.services.GameCreateService;
-import pl.Alski.Munch.service.DiceService;
 import pl.Alski.Munch.service.QueueService;
 import pl.Alski.Munch.tour.TourService;
 
@@ -16,10 +14,8 @@ public class GameMasterServiceImpl implements GameMasterService {
 
     @OneToOne
     private Game game;
-    private GameCreateService gameCreator;
     private QueueService queueService;
     private TourService tourService;
-    private DiceService dice;
 
 
     @Override

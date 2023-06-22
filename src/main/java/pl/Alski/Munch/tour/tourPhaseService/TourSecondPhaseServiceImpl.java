@@ -9,6 +9,7 @@ import pl.Alski.Munch.cards.doorCards.Monster;
 import pl.Alski.Munch.fight.Fight;
 import pl.Alski.Munch.fight.service.FightServiceFacade;
 import pl.Alski.Munch.player.Player;
+import pl.Alski.Munch.player.moves.PlayerMove;
 import pl.Alski.Munch.service.PlayerCommunicationService;
 import pl.Alski.Munch.tour.Tour;
 import pl.Alski.Munch.tour.TourStatus;
@@ -38,10 +39,12 @@ public class TourSecondPhaseServiceImpl implements TourSecondPhaseService{
 
     private Tour possibleFightScenario(Tour tour, Player player, List<Card> monsters) {
          if (checkPlayerWantsToFight(player)) {
+             player.setPlayerMoves(List.of(PlayerMove.PICK_MONSTER_CARD));
              Monster monster = (Monster) communicationService.askPlayerWhichCard(
                      player.getId(), monsters, "Which monster do you want to fight with?");
              logger.info(player.getName() + " picked a monster to fight with: " + monster.toString());
-             Fight fight = fightServiceFacade.fight(player, monster);
+             fightServiceFacade.fight(player, monster);
+             tour.setFoughtAMonster(true);
          }
          else{
              return noFightScenario(tour);
@@ -53,6 +56,7 @@ public class TourSecondPhaseServiceImpl implements TourSecondPhaseService{
     }
 
     private boolean checkPlayerWantsToFight(Player player) {
+        player.setPlayerMoves(List.of(PlayerMove.ANSWER_QUESTION));
         return communicationService.askPlayer(player,
                 "You can now Ask for Trouble and pick a Monster to fight with, from your Hand. Do you want it?");
     }

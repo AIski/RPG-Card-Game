@@ -6,47 +6,66 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import pl.Alski.Munch.fight.Fight;
 import pl.Alski.Munch.fight.FightOutcome;
-import pl.Alski.Munch.service.ModifierService;
+import pl.Alski.Munch.fight.FightProjectedOutcome;
+import pl.Alski.Munch.player.Player;
+import pl.Alski.Munch.player.moves.PlayerMove;
 import pl.Alski.Munch.service.PlayerCommunicationService;
+
+import java.util.ArrayList;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
 public class FightLogicServiceImpl implements FightLogicService {
     private final static Logger logger = LoggerFactory.getLogger(FightLogicServiceImpl.class);
     private FightProjectedOutcomeService projectedOutcomeService;
-    private FightBackupService backupService;
-    private ModifierService modifierService;
     private PlayerCommunicationService communicationService;
+    private FightSaveService saveService;
 
 
     @Override
     public FightOutcome carryOutFight(Fight fight) {
-        var player = fight.getPlayer();
-
-        /// TODO: // HERE comes the fight code. result is the outcome of the fight.
-        //  - Fight logic
-        //  - player moves
-        //          -- use items,
-        //          -- request backup - this one for later.
-
-
-        // check if the player can win solo
-
-        // if not, check if he can use some items or consumables to win.
-        communicationService.askPlayer(player, "Looks like you are about to lose that fight. Got any items you can use?");
-        //use items he wanted to use, recalculate the battle outcome
-
-
-        // if he still loses, he can ask for help
-        //TODO: For later:
-        // - // ask the otherPlayer if he wants to help
-        //        //pretty much if anyone says no, you ask every player until someone helps you or everyone says no
-        // - try to bribe other players if you have to. You can offer any of your items or any share in Monster Treasures;
-        return null;
+        logger.info("Inside FightLogicServiceImpl");
+        FightProjectedOutcome projectedOutcome;
+        while (!fight.isOver()) {
+            logger.info("Inside fight loop of FightLogicService");
+            projectedOutcome = projectedOutcomeService.getFightProjectedOutcome(fight);
+            communicationService.sendProjectedOutcome(projectedOutcome);
+            setPlayerMoves(fight);
+            setOtherPlayersMoves(fight);
+            saveService.save(fight);
+        }
+       projectedOutcome = projectedOutcomeService.getFightProjectedOutcome(fight);
+        logger.info("FightLogicServiceImpl finishing its job.");
+        return FightOutcome.builder()
+                .player(fight.getPlayer())
+                .helpingPlayer(Optional.ofNullable(fight.getHelpingPlayer()).orElse(null))
+                .success(projectedOutcome.isPlayerShouldWin())
+                .monsters(fight.getMonsters())
+                .build();
     }
 
-    //boolean projectedResult = projectedOutcomeService.checkIfPlayerWinsTheFight(fight);
-    //               if (projectedResult){
-    //                    logger.info(player.getName() + " is about to win the Fight with " + monster.toString()+ ". Anyone willing to change it?");
-    //               }
+
+    private static void setPlayerMoves(Fight fight) {
+        var player = fight.getPlayer();
+        var possibleMoves = new ArrayList<PlayerMove>();
+        possibleMoves.add(PlayerMove.ACCEPT_THE_OUTCOME);
+        possibleMoves.add(PlayerMove.USE_CARD);
+        if (fight.getHelpingPlayer() != null) possibleMoves.add(PlayerMove.ASK_FOR_HELP);
+        player.setPlayerMoves(possibleMoves);
+    }
+
+    private void setOtherPlayersMoves(Fight fight) {
+        var possibleMoves = new ArrayList<PlayerMove>();
+        possibleMoves.add(PlayerMove.USE_CARD);
+
+        var helpingPlayer = fight.getHelpingPlayer();
+        helpingPlayer.setPlayerMoves(possibleMoves);
+        for (Player spectator : fight.getSpectators()) {
+            spectator.setPlayerMoves(possibleMoves);
+        }
+
+    }
+
+
 }

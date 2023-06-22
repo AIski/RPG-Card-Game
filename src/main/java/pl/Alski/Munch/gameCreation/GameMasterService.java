@@ -1,4 +1,4 @@
-package pl.Alski.Munch;
+package pl.Alski.Munch.gameCreation;
 
 import org.springframework.stereotype.Service;
 import pl.Alski.Munch.entity.Game;

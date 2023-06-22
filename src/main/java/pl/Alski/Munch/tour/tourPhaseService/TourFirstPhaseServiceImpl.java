@@ -13,11 +13,14 @@ import pl.Alski.Munch.cards.service.CardServiceFacade;
 import pl.Alski.Munch.cards.service.CardDealService;
 import pl.Alski.Munch.player.Player;
 import pl.Alski.Munch.cards.service.CardUseService;
+import pl.Alski.Munch.player.moves.PlayerMove;
 import pl.Alski.Munch.service.EventService;
 import pl.Alski.Munch.service.PlayerCommunicationService;
 import pl.Alski.Munch.tour.Tour;
 import pl.Alski.Munch.tour.TourStatus;
 import pl.Alski.Munch.tour.TourPhase;
+
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -41,7 +44,7 @@ public class TourFirstPhaseServiceImpl implements TourFirstPhaseService{
 
         if (currentDoorCard instanceof Monster) {
             logger.info(player.getName() + " is about to start a fight with " + currentDoorCard.toString() + ".");
-            Fight fight = fightServiceFacade.fight(player, (Monster) currentDoorCard);
+            fightServiceFacade.fight(player, (Monster) currentDoorCard);
             tour.setFoughtAMonster(true);
         } else if (currentDoorCard instanceof Curse) {
             doCurseLogic(player, currentDoorCard);
@@ -65,6 +68,7 @@ public class TourFirstPhaseServiceImpl implements TourFirstPhaseService{
     }
 
     private void checkPlayerWantsToUseThisCardNow(Player player, DoorCard card) {
+        player.setPlayerMoves(List.of(PlayerMove.ANSWER_QUESTION));
         boolean confirmation = communicationService.askPlayer(player, "Do you want to use extra card right away? " + card.toString() + ".");
         if (confirmation) {
             cardUseService.useCard(player, card);

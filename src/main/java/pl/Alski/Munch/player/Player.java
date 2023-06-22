@@ -4,8 +4,11 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import pl.Alski.Munch.cards.Card;
 import pl.Alski.Munch.entity.Character;
+import pl.Alski.Munch.entity.Message;
+import pl.Alski.Munch.player.moves.PlayerMove;
 
 import java.util.List;
 
@@ -21,11 +24,15 @@ public class Player {
     private Long id;
 
     private String name;
+    private String email;
+    private String password;
 
     @OneToMany
     private Character character;
 
     private List<Card> hand;
+    private List<PlayerMove> playerMoves;
+    private List<Message> messages;
 
 
 }

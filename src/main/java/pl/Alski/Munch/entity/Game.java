@@ -2,7 +2,7 @@ package pl.Alski.Munch.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import pl.Alski.Munch.GameMasterService;
+import pl.Alski.Munch.gameCreation.GameMasterService;
 
 import pl.Alski.Munch.player.Player;
 import pl.Alski.Munch.cards.service.CardServiceFacadeImpl;
@@ -24,6 +24,8 @@ public class Game {
 
     @OneToOne
     private GameMasterService gameMaster;
+
+    private Boolean fightMode = false;
 
     private Boolean isFinished = false;
 

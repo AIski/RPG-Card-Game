@@ -22,6 +22,8 @@ public class FightServiceFacadeImpl implements FightServiceFacade {
     private FightLootService lootService;
     private EventService eventService;
     private FightCleanUpService cleanUpService;
+    private FightSaveService saveService;
+
 
     @Override
     public void fight(Player player, Monster monster) {
@@ -29,20 +31,27 @@ public class FightServiceFacadeImpl implements FightServiceFacade {
 
         Fight fight = new Fight(player, monster);
         FightOutcome fightOutcome = fightLogicService.carryOutFight(fight);
+        logger.info("The fight is over.");
+        fight.setOver(true);
+        saveService.save(fight);
 
         if (fightOutcome.isSuccess()) {
+            logger.info(player.getName()+ " has won his fight with "+fight.getMonsters());
             logger.info("Promotion Service Doing its thing...");
             promotionService.promote(fightOutcome);
             logger.info("Loot Service Doing its thing...");
             lootService.distributeLoot(fightOutcome);
         } else {
+            //todo for later: add helping player to suffer defeat too
+            logger.info(player.getName() + " has lost his fight with "+fight.getMonsters());
+            logger.info(player.getName() + " will try to run away from "+fight.getMonsters());
             EscapeOutcome escapeOutcome = escapeService.tryToEscapeFromAllMonsters(player, fight);
             for (Monster tempMonster : escapeOutcome.getFailedToEscapeMonsters()){
                 eventService.makeEventHappenToPlayer(tempMonster.getMiserableEnd(), player);
             }
         }
         cleanUpService.clean(fightOutcome);
-        logger.info("The fight has ended.");
+        logger.info("The fight service job has ended.");
     }
 
 }

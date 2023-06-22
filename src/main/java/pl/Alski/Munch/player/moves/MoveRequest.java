@@ -5,5 +5,5 @@ import lombok.Data;
 @Data
 public class MoveRequest {
      private boolean moveResponse;
-     private PossibleMove possibleMove;
+     private PlayerMove playerMove;
 }
