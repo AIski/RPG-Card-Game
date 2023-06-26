@@ -5,7 +5,7 @@ import lombok.Data;
 import pl.Alski.Munch.entity.Event;
 
 @Data
-public class Curse extends DoorCard {
+public abstract class Curse extends DoorCard {
     Event event;
     boolean isAutoCast;
 }

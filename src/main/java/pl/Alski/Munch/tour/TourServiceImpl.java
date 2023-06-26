@@ -9,6 +9,8 @@ import pl.Alski.Munch.service.HandValidatorService;
 import pl.Alski.Munch.service.PlayerCommunicationService;
 import pl.Alski.Munch.tour.tourPhaseService.TourPhaseService;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class TourServiceImpl implements TourService {
@@ -19,8 +21,13 @@ public class TourServiceImpl implements TourService {
 
 
     @Override
-    public Tour playPlayerTour(Player player) {
-        Tour tour = new Tour(player, null, null, false);
+    public Tour playPlayerTour(Player player, List<Player> spectators) {
+        Tour tour = new Tour(
+                player,
+                null,
+                null,
+                false,
+                spectators);
         logger.info(player.getName() + " is starting his tour.");
         tour = tourService.playFirstPhase(tour);
 

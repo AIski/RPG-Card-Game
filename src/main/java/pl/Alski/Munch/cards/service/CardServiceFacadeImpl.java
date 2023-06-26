@@ -20,11 +20,10 @@ import java.util.Stack;
 @AllArgsConstructor
 public class CardServiceFacadeImpl implements CardServiceFacade{
 
+    private final static Logger logger = LoggerFactory.getLogger(CardServiceFacadeImpl.class);
     private final CardRepository cardRepository;
     private final CardShuffleService shuffleService;
     private final CardDealService cardDealService;
-    private final static Logger logger = LoggerFactory.getLogger(CardServiceFacadeImpl.class);
-
 
     private Game game;
     private Stack<DoorCard> doorCardsStack;
@@ -32,9 +31,12 @@ public class CardServiceFacadeImpl implements CardServiceFacade{
     private Stack<DoorCard> usedDoorCardsStack;
     private Stack<TreasureCard> usedTreasureCardsStack;
 
-    public void loadDoorCardsFromRepository(){
+
+    public void getCardsReady() {
         doorCardsStack.addAll(cardRepository.getAllDoorCards());
         treasureCardsStack.addAll(cardRepository.getAllTreasureCards());
+        shuffleService.shuffle(doorCardsStack);
+        shuffleService.shuffle(treasureCardsStack);
     }
 
     public void shuffleDoorCardsStack() {
@@ -50,6 +52,7 @@ public class CardServiceFacadeImpl implements CardServiceFacade{
         logger.info("Door card was dealt to "+player.getName());
         cardDealService.dealCardToPlayer(nextCard, player);
     }
+
     public void dealNextTreasureCard(Player player) {
         TreasureCard nextCard = treasureCardsStack.pop();
         logger.info("Treasure card was dealt to "+player.getName());
@@ -81,9 +84,6 @@ public class CardServiceFacadeImpl implements CardServiceFacade{
     }
 
 
-    public void getCardsReady() {
-        loadDoorCardsFromRepository();
-        shuffleDoorCardsStack();
-        shuffleTreasureCardsStack();
-    }
+
+
 }

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import pl.Alski.Munch.cards.service.CardServiceFacade;
 import pl.Alski.Munch.gameCreation.GameCreationRequest;
 import pl.Alski.Munch.entity.Game;
 import pl.Alski.Munch.gameCreation.GameCreationResponse;
@@ -20,6 +21,7 @@ public class GameCreateServiceImpl implements GameCreateService {
     private GameDeterminePlayersOrderService determinePlayersOrderService;
     private CharacterCreateService characterCreateService;
     private GameSaveService gameSaveService;
+    private CardServiceFacade cardService;
 
 
     //  //1. pick game size- 3-6 players
@@ -54,15 +56,15 @@ public class GameCreateServiceImpl implements GameCreateService {
 
     private void getCardsReady(Game game) {
         logger.info("Getting cards ready...");
-        game.getCardService().getCardsReady();
+       cardService.getCardsReady();
     }
 
     private void dealStartingCardsToAllPlayers(Game game) {
         logger.info("Dealing starting cards to all players...");
         for (int i = 0; i < 4; i++) {
             for (Player player : game.getPlayers()) {
-                game.getCardService().dealNextDoorCard(player);
-                game.getCardService().dealNextTreasureCard(player);
+                cardService.dealNextDoorCard(player);
+                cardService.dealNextTreasureCard(player);
             }
         }
 

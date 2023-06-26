@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import pl.Alski.Munch.cards.Card;
-import pl.Alski.Munch.entity.Character;
 import pl.Alski.Munch.entity.Message;
 import pl.Alski.Munch.player.moves.PlayerMove;
 
@@ -26,6 +25,7 @@ public class Player {
     private String name;
     private String email;
     private String password;
+    private Sex sex;
 
     @OneToMany
     private Character character;
@@ -33,6 +33,5 @@ public class Player {
     private List<Card> hand;
     private List<PlayerMove> playerMoves;
     private List<Message> messages;
-
 
 }

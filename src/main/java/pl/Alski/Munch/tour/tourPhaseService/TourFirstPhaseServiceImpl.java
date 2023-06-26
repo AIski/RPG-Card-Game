@@ -11,6 +11,7 @@ import pl.Alski.Munch.fight.Fight;
 import pl.Alski.Munch.fight.service.FightServiceFacade;
 import pl.Alski.Munch.cards.service.CardServiceFacade;
 import pl.Alski.Munch.cards.service.CardDealService;
+import pl.Alski.Munch.fight.service.PlayerPossibleMovesService;
 import pl.Alski.Munch.player.Player;
 import pl.Alski.Munch.cards.service.CardUseService;
 import pl.Alski.Munch.player.moves.PlayerMove;
@@ -33,6 +34,7 @@ public class TourFirstPhaseServiceImpl implements TourFirstPhaseService{
     private EventService eventService;
     private PlayerCommunicationService communicationService;
     private CardUseService cardUseService;
+    private PlayerPossibleMovesService playerMoveService;
 
 
     public Tour playFirstPhase(Tour tour) {
@@ -40,11 +42,13 @@ public class TourFirstPhaseServiceImpl implements TourFirstPhaseService{
         tour.setPhase(TourPhase.OPEN_THE_DOOR);
         tour.setStatus(TourStatus.STARTED);
 
+        playerMoveService.setPlayerMoves(tour.getSpectators(), List.of(PlayerMove.DO_NOTHING));
+        List<Player> spectators = tour.getSpectators();
         DoorCard currentDoorCard = cardService.dealNextDoorCardOnTable();
 
         if (currentDoorCard instanceof Monster) {
             logger.info(player.getName() + " is about to start a fight with " + currentDoorCard.toString() + ".");
-            fightServiceFacade.fight(player, (Monster) currentDoorCard);
+            fightServiceFacade.fight(player, (Monster) currentDoorCard, spectators);
             tour.setFoughtAMonster(true);
         } else if (currentDoorCard instanceof Curse) {
             doCurseLogic(player, currentDoorCard);
@@ -68,7 +72,7 @@ public class TourFirstPhaseServiceImpl implements TourFirstPhaseService{
     }
 
     private void checkPlayerWantsToUseThisCardNow(Player player, DoorCard card) {
-        player.setPlayerMoves(List.of(PlayerMove.ANSWER_QUESTION));
+        playerMoveService.setPlayerMoves(player, List.of(PlayerMove.ANSWER_QUESTION));
         boolean confirmation = communicationService.askPlayer(player, "Do you want to use extra card right away? " + card.toString() + ".");
         if (confirmation) {
             cardUseService.useCard(player, card);

@@ -11,6 +11,7 @@ public interface PlayerCommunicationService {
 
 
     boolean askPlayer(Player player, String question);
+    //add message to player List of messages
 
     boolean sendProjectedOutcome(FightProjectedOutcome projectedOutcome);
 }

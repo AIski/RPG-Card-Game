@@ -8,7 +8,6 @@ import pl.Alski.Munch.player.Player;
 
 @Service
 public interface CardServiceFacade {
-    void loadDoorCardsFromRepository();
 
     void shuffleDoorCardsStack();
 

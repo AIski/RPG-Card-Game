@@ -9,7 +9,10 @@ import pl.Alski.Munch.fight.EscapeOutcome;
 import pl.Alski.Munch.fight.Fight;
 import pl.Alski.Munch.fight.FightOutcome;
 import pl.Alski.Munch.player.Player;
+import pl.Alski.Munch.player.moves.PlayerMove;
 import pl.Alski.Munch.service.EventService;
+
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -23,11 +26,14 @@ public class FightServiceFacadeImpl implements FightServiceFacade {
     private EventService eventService;
     private FightCleanUpService cleanUpService;
     private FightSaveService saveService;
+    private PlayerPossibleMovesService playerMoveService;
+
 
 
     @Override
-    public void fight(Player player, Monster monster) {
+    public void fight(Player player, Monster monster, List<Player> spectators) {
         logger.info(player.getName() + " is about to start a fight with " + monster.toString());
+        playerMoveService.setPlayerMoves(spectators, List.of(PlayerMove.DO_NOTHING));
 
         Fight fight = new Fight(player, monster);
         FightOutcome fightOutcome = fightLogicService.carryOutFight(fight);
