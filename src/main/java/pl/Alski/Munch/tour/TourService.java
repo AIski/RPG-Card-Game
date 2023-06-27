@@ -3,9 +3,11 @@ package pl.Alski.Munch.tour;
 import org.springframework.stereotype.Service;
 import pl.Alski.Munch.player.Player;
 
+import java.util.List;
+
 @Service
 public interface TourService {
-    Tour playPlayerTour(Player player);
+    Tour startPlayerTour(Player player, List<Player> spectators);
 
     //1. Open the door
     //pick one Door card, play it on table, Front side up

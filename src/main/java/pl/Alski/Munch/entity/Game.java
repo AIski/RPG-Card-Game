@@ -34,6 +34,6 @@ public class Game {
     private Player winner;
 
     public void play() {
-        gameMaster.playTheGame();
+        gameMaster.startNextPlayerTour();
     }
 }

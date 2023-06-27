@@ -3,7 +3,7 @@ package pl.Alski.Munch.fight.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import pl.Alski.Munch.cards.doorCards.Monster;
+import pl.Alski.Munch.monster.Monster;
 import pl.Alski.Munch.cards.service.CardServiceFacade;
 import pl.Alski.Munch.fight.FightOutcome;
 

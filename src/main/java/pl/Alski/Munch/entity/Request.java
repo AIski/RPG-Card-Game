@@ -1,4 +1,6 @@
 package pl.Alski.Munch.entity;
 
-public class Request implements Event{
+import pl.Alski.Munch.events.Event;
+
+public class Request implements Event {
 }

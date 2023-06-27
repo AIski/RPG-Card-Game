@@ -6,9 +6,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import pl.Alski.Munch.cards.Card;
-import pl.Alski.Munch.cards.DAO.CardRepository;
-import pl.Alski.Munch.cards.doorCards.DoorCard;
-import pl.Alski.Munch.cards.treasureCards.TreasureCard;
+import pl.Alski.Munch.DAO.CardRepository;
+import pl.Alski.Munch.cards.DoorCard;
+import pl.Alski.Munch.cards.TreasureCard;
 import pl.Alski.Munch.entity.Game;
 import pl.Alski.Munch.player.Player;
 
@@ -18,7 +18,7 @@ import java.util.Stack;
 @Service
 @Getter
 @AllArgsConstructor
-public class CardServiceFacadeImpl implements CardServiceFacade{
+public class CardServiceFacadeImpl implements CardServiceFacade {
 
     private final static Logger logger = LoggerFactory.getLogger(CardServiceFacadeImpl.class);
     private final CardRepository cardRepository;
@@ -47,15 +47,15 @@ public class CardServiceFacadeImpl implements CardServiceFacade{
         shuffleService.shuffle(treasureCardsStack);
     }
 
-   public void dealNextDoorCard(Player player) {
+    public void dealNextDoorCard(Player player) {
         DoorCard nextCard = doorCardsStack.pop();
-        logger.info("Door card was dealt to "+player.getName());
+        logger.info("Door card was dealt to " + player.getName());
         cardDealService.dealCardToPlayer(nextCard, player);
     }
 
     public void dealNextTreasureCard(Player player) {
         TreasureCard nextCard = treasureCardsStack.pop();
-        logger.info("Treasure card was dealt to "+player.getName());
+        logger.info("Treasure card was dealt to " + player.getName());
         cardDealService.dealCardToPlayer(nextCard, player);
     }
 
@@ -75,15 +75,12 @@ public class CardServiceFacadeImpl implements CardServiceFacade{
 
     @Override
     public <T extends Card> void discardCard(T card) {
-         if (card instanceof DoorCard) {
-             usedDoorCardsStack.add((DoorCard) card);
-         }
-         else {
-             usedTreasureCardsStack.add((TreasureCard) card);
-         }
+        if (card instanceof DoorCard) {
+            usedDoorCardsStack.add((DoorCard) card);
+        } else {
+            usedTreasureCardsStack.add((TreasureCard) card);
+        }
     }
-
-
 
 
 }

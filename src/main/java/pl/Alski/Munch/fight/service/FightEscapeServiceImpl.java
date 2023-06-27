@@ -4,13 +4,12 @@ import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import pl.Alski.Munch.cards.doorCards.Monster;
+import pl.Alski.Munch.monster.Monster;
 import pl.Alski.Munch.fight.EscapeOutcome;
 import pl.Alski.Munch.fight.Fight;
 import pl.Alski.Munch.player.Player;
 import pl.Alski.Munch.service.ConditionService;
 import pl.Alski.Munch.service.DiceService;
-import pl.Alski.Munch.service.EventService;
 import pl.Alski.Munch.service.ModifierDiceService;
 
 import java.util.concurrent.locks.Condition;

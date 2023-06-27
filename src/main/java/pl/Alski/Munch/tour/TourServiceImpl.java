@@ -20,8 +20,7 @@ public class TourServiceImpl implements TourService {
     private PlayerCommunicationService communicationService;
 
 
-    @Override
-    public Tour playPlayerTour(Player player, List<Player> spectators) {
+    public Tour startPlayerTour(Player player, List<Player> spectators) {
         Tour tour = new Tour(
                 player,
                 null,

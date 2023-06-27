@@ -5,10 +5,9 @@ import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import pl.Alski.Munch.gameCreation.GameMasterServiceImpl;
 import pl.Alski.Munch.player.Character;
 import pl.Alski.Munch.player.Player;
-import pl.Alski.Munch.player.Race;
+import pl.Alski.Munch.races.Race;
 
 @Service
 @AllArgsConstructor

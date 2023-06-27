@@ -1,7 +1,7 @@
 package pl.Alski.Munch.fight;
 
 import lombok.Data;
-import pl.Alski.Munch.cards.doorCards.Monster;
+import pl.Alski.Munch.monster.Monster;
 
 import java.util.List;
 

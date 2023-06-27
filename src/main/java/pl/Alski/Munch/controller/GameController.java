@@ -10,7 +10,7 @@ import pl.Alski.Munch.gameCreation.GameCreationRequest;
 import pl.Alski.Munch.gameCreation.GameCreationResponse;
 import pl.Alski.Munch.gameCreation.GameSearchService;
 import pl.Alski.Munch.gameCreation.services.GameCreateService;
-import pl.Alski.Munch.player.moves.PlayerDetails;
+import pl.Alski.Munch.moves.PlayerDetails;
 
 @RestController
 @RequestMapping("/api/v1/game")

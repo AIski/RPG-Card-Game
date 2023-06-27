@@ -1,6 +1,6 @@
 package pl.Alski.Munch.cards.service;
 
-import pl.Alski.Munch.cards.doorCards.DoorCard;
+import pl.Alski.Munch.cards.DoorCard;
 import pl.Alski.Munch.player.Player;
 
 public interface CardUseService {

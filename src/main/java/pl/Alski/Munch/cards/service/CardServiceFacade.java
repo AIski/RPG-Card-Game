@@ -2,8 +2,8 @@ package pl.Alski.Munch.cards.service;
 
 import org.springframework.stereotype.Service;
 import pl.Alski.Munch.cards.Card;
-import pl.Alski.Munch.cards.doorCards.DoorCard;
-import pl.Alski.Munch.cards.treasureCards.TreasureCard;
+import pl.Alski.Munch.cards.DoorCard;
+import pl.Alski.Munch.cards.TreasureCard;
 import pl.Alski.Munch.player.Player;
 
 @Service

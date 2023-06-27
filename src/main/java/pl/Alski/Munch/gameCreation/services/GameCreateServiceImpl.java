@@ -23,13 +23,6 @@ public class GameCreateServiceImpl implements GameCreateService {
     private GameSaveService gameSaveService;
     private CardServiceFacade cardService;
 
-
-    //  //1. pick game size- 3-6 players
-    //    //2. Set up players queue
-    //    //3. create characters at level 1,
-    //    //4. add cards to game, shuffle both decks
-    //    //5. deal the cards to each player- 4 Door and 4 Treasure for each
-
     @Override
     public GameCreationResponse createNewGame(GameCreationRequest request) {
         logger.info("Creating new game...");

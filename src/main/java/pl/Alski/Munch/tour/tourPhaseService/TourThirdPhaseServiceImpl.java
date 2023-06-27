@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import pl.Alski.Munch.cards.service.CardServiceFacade;
 import pl.Alski.Munch.player.Player;
-import pl.Alski.Munch.player.moves.PlayerMove;
+import pl.Alski.Munch.moves.PlayerMove;
 import pl.Alski.Munch.service.PlayerCommunicationService;
 import pl.Alski.Munch.tour.Tour;
 import pl.Alski.Munch.tour.TourStatus;

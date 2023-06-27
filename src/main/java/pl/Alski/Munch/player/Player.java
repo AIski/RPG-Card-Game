@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 import pl.Alski.Munch.cards.Card;
 import pl.Alski.Munch.entity.Message;
-import pl.Alski.Munch.player.moves.PlayerMove;
+import pl.Alski.Munch.moves.PlayerMove;
 
 import java.util.List;
 

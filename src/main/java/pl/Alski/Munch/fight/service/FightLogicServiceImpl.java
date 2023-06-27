@@ -8,7 +8,7 @@ import pl.Alski.Munch.fight.Fight;
 import pl.Alski.Munch.fight.FightOutcome;
 import pl.Alski.Munch.fight.FightProjectedOutcome;
 import pl.Alski.Munch.player.Player;
-import pl.Alski.Munch.player.moves.PlayerMove;
+import pl.Alski.Munch.moves.PlayerMove;
 import pl.Alski.Munch.service.PlayerCommunicationService;
 
 import java.util.ArrayList;
