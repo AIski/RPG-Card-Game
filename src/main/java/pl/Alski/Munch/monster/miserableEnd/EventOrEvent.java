@@ -1,0 +1,9 @@
+package pl.Alski.Munch.monster.miserableEnd;
+
+import pl.Alski.Munch.events.Event;
+
+import java.util.List;
+
+public class EventOrEvent implements MiserableEnd{
+    List<Event> events;
+}

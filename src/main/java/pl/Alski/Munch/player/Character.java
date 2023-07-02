@@ -6,11 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import pl.Alski.Munch.classes.Class;
-import pl.Alski.Munch.items.BigItem;
-import pl.Alski.Munch.items.slots.*;
 import pl.Alski.Munch.races.Race;
-
-import java.util.List;
 
 
 @Entity
@@ -37,13 +33,7 @@ public class Character {
     private Class characterClass;
     private Race race;
 
-    private OneHandedWeapon[] singleHandedWeapons= new OneHandedWeapon[2];
-    private TwoHandedWeapon twoHandedWeapon;
-    private Helmet helmet;
-    private Armour armour;
-    private Boots boots;
-    private List<Other> others;
-    private Sidekick sidekick;
+    private Equipment equipment;
 
-    private BigItem bigItem;
+
 }
