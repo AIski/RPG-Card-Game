@@ -5,14 +5,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import pl.Alski.Munch.cards.Card;
-import pl.Alski.Munch.monster.Monster;
 import pl.Alski.Munch.fight.service.FightServiceFacade;
-import pl.Alski.Munch.player.Player;
+import pl.Alski.Munch.monster.Monster;
 import pl.Alski.Munch.moves.PlayerMove;
+import pl.Alski.Munch.player.Player;
 import pl.Alski.Munch.service.PlayerCommunicationService;
 import pl.Alski.Munch.tour.Tour;
-import pl.Alski.Munch.tour.TourStatus;
 import pl.Alski.Munch.tour.TourPhase;
+import pl.Alski.Munch.tour.TourStatus;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -42,6 +42,7 @@ public class TourSecondPhaseServiceImpl implements TourSecondPhaseService{
              Monster monster = (Monster) communicationService.askPlayerWhichCard(
                      player.getId(), monsters, "Which monster do you want to fight with?");
              logger.info(player.getName() + " picked a monster to fight with: " + monster.toString());
+             List<Player> spectators = tour.getSpectators();
              fightServiceFacade.fight(player, monster, spectators);
              tour.setFoughtAMonster(true);
          }

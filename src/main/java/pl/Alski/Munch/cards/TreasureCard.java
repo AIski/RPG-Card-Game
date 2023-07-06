@@ -1,6 +1,12 @@
 package pl.Alski.Munch.cards;
 
-import pl.Alski.Munch.cards.Card;
+import lombok.NoArgsConstructor;
 
-public class TreasureCard extends Card {
+@NoArgsConstructor
+public class TreasureCard implements Card {
+    private String name;
+
+    public TreasureCard(String name) {
+        this.name = name;
+    }
 }

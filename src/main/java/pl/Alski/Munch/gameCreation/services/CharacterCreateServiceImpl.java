@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import pl.Alski.Munch.player.Character;
 import pl.Alski.Munch.player.Player;
-import pl.Alski.Munch.races.Race;
+import pl.Alski.Munch.races.Human;
 
 @Service
 @AllArgsConstructor
@@ -20,14 +20,14 @@ public class CharacterCreateServiceImpl implements CharacterCreateService {
     public void createCharacter(Player player) {
         Character character = Character.builder()
                 .name(player.getName())
-                .race(Race.HUMAN)
+                .race(new Human())
                 .sex(player.getSex())
                 .handSize(5)
                 .level(1)
                 .gold(0)
                 .player(player)
                 .build();
-        player.setCharacter(character);
+        player.setGameCharacter(character);
         characterSaveService.save(character);
 
         logger.info("Created character " + character.getName() + " with id: " + character.getId() + ".");

@@ -1,8 +1,8 @@
 package pl.Alski.Munch.service;
 
+import pl.Alski.Munch.conditions.Condition;
 import pl.Alski.Munch.player.Player;
 
-import java.util.concurrent.locks.Condition;
 
 public class ConditionServiceImpl implements ConditionService{
     @Override

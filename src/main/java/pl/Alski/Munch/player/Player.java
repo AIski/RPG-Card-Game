@@ -1,10 +1,8 @@
 package pl.Alski.Munch.player;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import pl.Alski.Munch.cards.Card;
 import pl.Alski.Munch.entity.Message;
 import pl.Alski.Munch.moves.PlayerMove;
@@ -12,7 +10,7 @@ import pl.Alski.Munch.moves.PlayerMove;
 import java.util.List;
 
 @Entity
-@AllArgsConstructor
+@Table(name = "players")
 @NoArgsConstructor
 @Data
 public class Player {
@@ -27,8 +25,8 @@ public class Player {
     private String password;
     private Sex sex;
 
-    @OneToMany
-    private Character character;
+    @OneToOne(mappedBy = "player")
+    private Character gameCharacter;
 
     private List<Card> hand;
     private List<PlayerMove> playerMoves;

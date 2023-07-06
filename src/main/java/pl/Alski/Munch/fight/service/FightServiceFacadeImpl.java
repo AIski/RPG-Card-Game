@@ -4,12 +4,12 @@ import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import pl.Alski.Munch.monster.Monster;
 import pl.Alski.Munch.fight.EscapeOutcome;
 import pl.Alski.Munch.fight.Fight;
 import pl.Alski.Munch.fight.FightOutcome;
-import pl.Alski.Munch.player.Player;
+import pl.Alski.Munch.monster.Monster;
 import pl.Alski.Munch.moves.PlayerMove;
+import pl.Alski.Munch.player.Player;
 import pl.Alski.Munch.service.EventService;
 
 import java.util.List;
@@ -23,12 +23,10 @@ public class FightServiceFacadeImpl implements FightServiceFacade {
     private FightEscapeService escapeService;
     private FightPromotionService promotionService;
     private FightLootService lootService;
-    private EventService eventService;
     private FightCleanUpService cleanUpService;
     private FightSaveService saveService;
     private PlayerPossibleMovesService playerMoveService;
-
-
+    private FightMiserableEndService miserableEndService;
 
     @Override
     public void fight(Player player, Monster monster, List<Player> spectators) {
@@ -53,7 +51,7 @@ public class FightServiceFacadeImpl implements FightServiceFacade {
             logger.info(player.getName() + " will try to run away from "+fight.getMonsters());
             EscapeOutcome escapeOutcome = escapeService.tryToEscapeFromAllMonsters(player, fight);
             for (Monster tempMonster : escapeOutcome.getFailedToEscapeMonsters()){
-                eventService.makeEventHappenToPlayer(tempMonster.getMiserableEnd(), player);
+                miserableEndService.faceMiserableEnd(player, tempMonster.getMiserableEnd());
             }
         }
         cleanUpService.clean(fightOutcome);

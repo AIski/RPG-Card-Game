@@ -13,7 +13,7 @@ public class HandValidatorServiceImpl implements HandValidatorService {
 
     @Override
     public boolean validateHand(Player player) {
-        var playerHandSizeWithModifiers = player.getCharacter().getHandSize() + modifierService.getHandModifier(player);
+        var playerHandSizeWithModifiers = player.getGameCharacter().getHandSize() + modifierService.getHandModifier(player);
 
         boolean result = player.getHand().size() <= playerHandSizeWithModifiers;
         if (result) {

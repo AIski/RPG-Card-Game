@@ -21,8 +21,9 @@ public class Character {
     private Long id;
 
     private String name;
+
     @OneToOne
-    @JoinColumn(name = "player_id")
+//    @JoinColumn(name = "player_id")
     private Player player;
 
     private int level;

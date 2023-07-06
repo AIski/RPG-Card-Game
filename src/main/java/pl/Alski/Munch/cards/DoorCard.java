@@ -1,16 +1,13 @@
 package pl.Alski.Munch.cards;
 
-import pl.Alski.Munch.cards.Card;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 public class DoorCard implements Card {
-    private final String name;
+    private String name;
 
     public DoorCard(String name) {
         this.name = name;
     }
 
-    @Override
-    public void giveAway() {
-
-    }
 }

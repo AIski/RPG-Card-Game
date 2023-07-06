@@ -1,7 +1,6 @@
 package pl.Alski.Munch.player;
 
 import lombok.Data;
-import pl.Alski.Munch.items.BigItem;
 import pl.Alski.Munch.items.slots.*;
 
 import java.util.List;
@@ -16,6 +15,4 @@ public class Equipment {
     private Boots boots;
     private List<Other> others;
     private Sidekick sidekick;
-
-    private BigItem bigItem;
 }
