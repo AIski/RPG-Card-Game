@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import pl.Alski.Munch.cards.service.CardServiceFacade;
+import pl.Alski.Munch.entity.Game;
 import pl.Alski.Munch.player.Player;
 import pl.Alski.Munch.moves.PlayerMove;
 import pl.Alski.Munch.service.PlayerCommunicationService;
@@ -24,7 +25,7 @@ public class TourThirdPhaseServiceImpl implements TourThirdPhaseService {
     private CardServiceFacade cardService;
 
 
-    public Tour playThirdPhase(Tour tour) {
+    public Tour playThirdPhase(Tour tour, Game game) {
         Player player = tour.getPlayer();
         tour.setPhase(TourPhase.SEARCH_THE_ROOM);
         tour.setStatus(TourStatus.STARTED);
@@ -33,7 +34,7 @@ public class TourThirdPhaseServiceImpl implements TourThirdPhaseService {
         boolean playerResponse = communicationService.askPlayer(player, "You can now Search the Room and pick a Door Card. Do you want it? (It would be stupid not to take it!)");
         if (playerResponse) {
             logger.info(player.getName() + " decides to Search the Room and pick extra Door Card.");
-            cardService.dealNextDoorCard(tour.getPlayer());
+            cardService.dealNextDoorCard(tour.getPlayer(), game);
         } else {
             logger.info(player.getName() + " decided not to Search the Room and will not pick extra Door Card... Wow!");
         }

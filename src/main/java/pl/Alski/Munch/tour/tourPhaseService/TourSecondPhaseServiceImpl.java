@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import pl.Alski.Munch.cards.Card;
+import pl.Alski.Munch.entity.Game;
 import pl.Alski.Munch.fight.service.FightServiceFacade;
 import pl.Alski.Munch.monster.Monster;
 import pl.Alski.Munch.moves.PlayerMove;
@@ -25,31 +26,29 @@ public class TourSecondPhaseServiceImpl implements TourSecondPhaseService{
     private PlayerCommunicationService communicationService;
     private FightServiceFacade fightServiceFacade;
 
-
-    public Tour playSecondPhase(Tour tour) {
+    public Tour playSecondPhase(Tour tour, Game game) {
         Player player = tour.getPlayer();
         tour.setPhase(TourPhase.ASK_FOR_TROUBLE);
         tour.setStatus(TourStatus.STARTED);
         List<Card> monsters = tour.getPlayer().getHand().stream()
                 .filter(a -> a instanceof Monster)
                 .collect(Collectors.toList());
-        return !monsters.isEmpty() ? possibleFightScenario(tour, player, monsters) : noFightScenario(tour);
+        return !monsters.isEmpty() ? possibleFightScenario(tour, player, monsters, game) : noFightScenario(tour);
     }
 
-    private Tour possibleFightScenario(Tour tour, Player player, List<Card> monsters) {
+    private Tour possibleFightScenario(Tour tour, Player player, List<Card> monsters, Game game) {
          if (checkPlayerWantsToFight(player)) {
              player.setPlayerMoves(List.of(PlayerMove.PICK_MONSTER_CARD));
              Monster monster = (Monster) communicationService.askPlayerWhichCard(
                      player.getId(), monsters, "Which monster do you want to fight with?");
              logger.info(player.getName() + " picked a monster to fight with: " + monster.toString());
              List<Player> spectators = tour.getSpectators();
-             fightServiceFacade.fight(player, monster, spectators);
+             fightServiceFacade.fight(player, monster, game);
              tour.setFoughtAMonster(true);
          }
          else{
              return noFightScenario(tour);
          }
-
         logger.info(player.getName() + " ended his second Tour Phase.");
         tour.setStatus(TourStatus.FINISHED);
         return tour;

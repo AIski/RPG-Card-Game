@@ -14,6 +14,7 @@ import java.util.Stack;
 
 @Entity
 @Data
+@Table(name = "games")
 public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,9 +24,6 @@ public class Game {
     @OneToMany
     @JoinColumn(name = "player_id")
     private List<Player> players;
-
-    @OneToOne
-    private CardServiceFacadeImpl cardService;
 
     private Stack<DoorCard> doorCardsStack;
     private Stack<TreasureCard> treasureCardsStack;

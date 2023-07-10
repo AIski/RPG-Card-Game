@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import pl.Alski.Munch.entity.Game;
 import pl.Alski.Munch.player.Player;
 import pl.Alski.Munch.moves.PlayerMove;
 import pl.Alski.Munch.service.HandValidatorService;
@@ -30,7 +31,7 @@ public class TourFourthPhaseServiceImpl implements TourFourthPhaseService{
     //TODO for later: players with lowest level should get the cards, as fair as possible
     // if player is lowest level, cards should be discarded.
 
-    public Tour playFourthPhase(Tour tour){
+    public Tour playFourthPhase(Tour tour, Game game){
         Player player = tour.getPlayer();
         tour.setPhase(TourPhase.SHOW_MERCY);
         tour.setStatus(TourStatus.STARTED);
@@ -43,9 +44,7 @@ public class TourFourthPhaseServiceImpl implements TourFourthPhaseService{
             player.setPlayerMoves(List.of(PlayerMove.GIVE_CARD_AWAY));
             saveService.save(tour);
         }
-
         logger.info(player.getName() + "has correct number of cards and ended his fourth Tour Phase.");
-
         tour.setStatus(TourStatus.FINISHED);
         saveService.save(tour);
         return tour;

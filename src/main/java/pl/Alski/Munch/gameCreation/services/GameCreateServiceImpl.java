@@ -49,15 +49,15 @@ public class GameCreateServiceImpl implements GameCreateService {
 
     private void getCardsReady(Game game) {
         logger.info("Getting cards ready...");
-       cardService.getCardsReady();
+       cardService.getCardsReady(game);
     }
 
     private void dealStartingCardsToAllPlayers(Game game) {
         logger.info("Dealing starting cards to all players...");
         for (int i = 0; i < 4; i++) {
             for (Player player : game.getPlayers()) {
-                cardService.dealNextDoorCard(player);
-                cardService.dealNextTreasureCard(player);
+                cardService.dealNextDoorCard(player, game);
+                cardService.dealNextTreasureCard(player, game);
             }
         }
 

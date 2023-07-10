@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.Alski.Munch.cards.DoorCard;
 import pl.Alski.Munch.cards.TreasureCard;
+import pl.Alski.Munch.entity.Game;
 
 import java.util.Stack;
 
@@ -13,19 +14,19 @@ public class CardSneakIntoCardStackServiceImpl implements CardSneakIntoCardStack
 
     CardServiceFacadeImpl cardService;
 
-    public Stack<DoorCard> sneakPeakIntoDoorCardStack() {
-        return cardService.getDoorCardsStack();
+    public Stack<DoorCard> sneakPeakIntoDoorCardStack(Game game) {
+        return game.getDoorCardsStack();
     }
 
-    public Stack<TreasureCard> sneakPeakIntoTreasureCardsStack() {
-        return cardService.getTreasureCardsStack();
+    public Stack<TreasureCard> sneakPeakIntoTreasureCardsStack(Game game) {
+        return game.getTreasureCardsStack();
     }
 
-    public Stack<DoorCard> sneakPeakIntoUsedDoorCardsStack() {
-        return cardService.getUsedDoorCardsStack();
+    public Stack<DoorCard> sneakPeakIntoUsedDoorCardsStack(Game game) {
+        return game.getUsedDoorCardsStack();
     }
 
-    public Stack<TreasureCard> sneakPeakIntoUsedTreasureCardsStack() {
-        return cardService.getUsedTreasureCardsStack();
+    public Stack<TreasureCard> sneakPeakIntoUsedTreasureCardsStack(Game game) {
+        return game.getUsedTreasureCardsStack();
     }
 }

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import pl.Alski.Munch.entity.Game;
 import pl.Alski.Munch.fight.EscapeOutcome;
 import pl.Alski.Munch.fight.Fight;
 import pl.Alski.Munch.fight.FightOutcome;
@@ -29,8 +30,11 @@ public class FightServiceFacadeImpl implements FightServiceFacade {
     private FightMiserableEndService miserableEndService;
 
     @Override
-    public void fight(Player player, Monster monster, List<Player> spectators) {
+    public void fight(Player player, Monster monster, Game game ) {
         logger.info(player.getName() + " is about to start a fight with " + monster.toString());
+        List<Player> spectators = game.getPlayers();
+        spectators.remove(player);
+
         playerMoveService.setPlayerMoves(spectators, List.of(PlayerMove.DO_NOTHING));
 
         Fight fight = new Fight(player, monster);
@@ -54,7 +58,7 @@ public class FightServiceFacadeImpl implements FightServiceFacade {
                 miserableEndService.faceMiserableEnd(player, tempMonster.getMiserableEnd());
             }
         }
-        cleanUpService.clean(fightOutcome);
+        cleanUpService.clean(fightOutcome, game);
         logger.info("The fight service job has ended.");
     }
 

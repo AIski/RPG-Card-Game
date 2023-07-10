@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import pl.Alski.Munch.curse.Curse;
 import pl.Alski.Munch.cards.DoorCard;
+import pl.Alski.Munch.entity.Game;
 import pl.Alski.Munch.monster.Monster;
 import pl.Alski.Munch.fight.service.FightServiceFacade;
 import pl.Alski.Munch.cards.service.CardServiceFacade;
@@ -36,18 +37,18 @@ public class TourFirstPhaseServiceImpl implements TourFirstPhaseService{
     private PlayerPossibleMovesService playerMoveService;
 
 
-    public Tour playFirstPhase(Tour tour) {
+    public Tour playFirstPhase(Tour tour, Game game) {
         Player player = tour.getPlayer();
         tour.setPhase(TourPhase.OPEN_THE_DOOR);
         tour.setStatus(TourStatus.STARTED);
 
         playerMoveService.setPlayerMoves(tour.getSpectators(), List.of(PlayerMove.DO_NOTHING));
         List<Player> spectators = tour.getSpectators();
-        DoorCard currentDoorCard = cardService.dealNextDoorCardOnTable();
+        DoorCard currentDoorCard = cardService.dealNextDoorCardOnTable(game);
 
         if (currentDoorCard instanceof Monster) {
             logger.info(player.getName() + " is about to start a fight with " + currentDoorCard.toString() + ".");
-            fightServiceFacade.fight(player, (Monster) currentDoorCard, spectators);
+            fightServiceFacade.fight(player, (Monster) currentDoorCard, game);
             tour.setFoughtAMonster(true);
         } else if (currentDoorCard instanceof Curse) {
             doCurseLogic(player, currentDoorCard);
