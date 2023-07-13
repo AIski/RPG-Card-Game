@@ -1,4 +1,7 @@
 package pl.Alski.Munch.conditions.requirements;
 
-public interface raceRequirement extends Requirement {
+import pl.Alski.Munch.races.Race;
+
+public class raceRequirement extends Requirement {
+    private Race requiredRace;
 }

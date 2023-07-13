@@ -8,7 +8,7 @@ import pl.Alski.Munch.cards.Card;
 import pl.Alski.Munch.cards.DoorCard;
 import pl.Alski.Munch.cards.TreasureCard;
 import pl.Alski.Munch.entity.Game;
-import pl.Alski.Munch.gameCreation.services.GameSaveService;
+import pl.Alski.Munch.service.GameSaveService;
 
 import java.util.Stack;
 

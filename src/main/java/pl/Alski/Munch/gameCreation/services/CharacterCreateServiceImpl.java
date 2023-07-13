@@ -12,7 +12,7 @@ import pl.Alski.Munch.races.Human;
 @Service
 @AllArgsConstructor
 public class CharacterCreateServiceImpl implements CharacterCreateService {
-    CharacterSaveService characterSaveService;
+    private CharacterSaveService characterSaveService;
     private final static Logger logger = LoggerFactory.getLogger(CharacterCreateServiceImpl.class);
 
 
@@ -21,6 +21,7 @@ public class CharacterCreateServiceImpl implements CharacterCreateService {
         Character character = Character.builder()
                 .name(player.getName())
                 .race(new Human())
+//                .characterClass(null)
                 .sex(player.getSex())
                 .handSize(5)
                 .level(1)

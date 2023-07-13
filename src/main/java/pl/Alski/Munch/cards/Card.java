@@ -1,8 +1,16 @@
 package pl.Alski.Munch.cards;
 
-import pl.Alski.Munch.player.Player;
+import jakarta.persistence.*;
+import lombok.Data;
 
-public interface Card {
+@Entity
+@Data
+public abstract class Card {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Long id;
 
-
+    private String name;
+    private Boolean headsUp;
 }

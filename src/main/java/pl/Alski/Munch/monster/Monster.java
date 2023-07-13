@@ -18,10 +18,4 @@ public class Monster extends DoorCard {
     private int lootSize;
     private int levelsGranted = 1;
     private Condition escapeWithoutFightCondition;
-
-    public Monster(String name) {
-        super(name);
-    }
-
-
 }

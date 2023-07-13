@@ -1,4 +1,4 @@
 package pl.Alski.Munch.conditions;
 
-public class NoBonusCondition implements Condition{
+public class NoBonusCondition extends Condition{
 }

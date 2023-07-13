@@ -2,6 +2,6 @@ package pl.Alski.Munch.monster.miserableEnd;
 
 import pl.Alski.Munch.events.Event;
 
-public class SimpleEvent implements MiserableEnd{
+public class SimpleEvent extends MiserableEnd{
     Event event;
 }

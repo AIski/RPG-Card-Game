@@ -1,4 +1,4 @@
 package pl.Alski.Munch.monster.miserableEnd;
 
-public interface MiserableEnd {
+public abstract class MiserableEnd {
 }

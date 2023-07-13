@@ -11,7 +11,7 @@ import java.util.Stack;
 @AllArgsConstructor
 public class CardShuffleServiceImpl implements CardShuffleService {
 
-    private Random random;
+    private final Random random = new Random();
 
     @Override
     public <T extends Card> Stack<T> shuffle(Stack<T> cardsStack) {

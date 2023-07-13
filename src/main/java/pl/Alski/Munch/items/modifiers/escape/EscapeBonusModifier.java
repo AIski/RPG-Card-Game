@@ -1,5 +1,5 @@
 package pl.Alski.Munch.items.modifiers.escape;
 
-public class EscapeBonusModifier implements EscapeModifier {
+public class EscapeBonusModifier extends EscapeModifier {
     private int modifier;
 }

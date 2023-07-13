@@ -1,6 +1,6 @@
 package pl.Alski.Munch.items.modifiers.loot;
 
-public class LootExtraItemOnEscapeModifier implements LootModifier {
+public class LootExtraItemOnEscapeModifier extends LootModifier {
     private boolean LootsExtraItemOnEscape;
 
 }

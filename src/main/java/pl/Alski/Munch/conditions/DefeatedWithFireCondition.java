@@ -1,4 +1,4 @@
 package pl.Alski.Munch.conditions;
 
-public class DefeatedWithFireCondition implements Condition{
+public class DefeatedWithFireCondition extends Condition{
 }

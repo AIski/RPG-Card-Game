@@ -1,4 +1,13 @@
 package pl.Alski.Munch.classes;
 
-public class Thief implements Class {
+import jakarta.persistence.*;
+import lombok.Data;
+
+@Entity
+@Data
+public class Thief extends CharacterClass {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Long id;
 }

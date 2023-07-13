@@ -1,13 +1,10 @@
 package pl.Alski.Munch.cards;
 
+import jakarta.persistence.Entity;
 import lombok.NoArgsConstructor;
 
+@Entity
 @NoArgsConstructor
-public abstract class DoorCard implements Card {
-    private String name;
-
-    public DoorCard(String name) {
-        this.name = name;
-    }
+public abstract class DoorCard extends Card {
 
 }

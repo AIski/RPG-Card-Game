@@ -5,10 +5,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import pl.Alski.Munch.cards.service.CardServiceFacade;
-import pl.Alski.Munch.gameCreation.GameCreationRequest;
 import pl.Alski.Munch.entity.Game;
+import pl.Alski.Munch.gameCreation.GameCreationRequest;
 import pl.Alski.Munch.gameCreation.GameCreationResponse;
 import pl.Alski.Munch.player.Player;
+import pl.Alski.Munch.service.GameSaveService;
 import pl.Alski.Munch.tour.tourPhaseService.TourFirstPhaseServiceImpl;
 
 import java.util.List;
@@ -18,10 +19,10 @@ import java.util.List;
 public class GameCreateServiceImpl implements GameCreateService {
 
     private final static Logger logger = LoggerFactory.getLogger(TourFirstPhaseServiceImpl.class);
-    private GameDeterminePlayersOrderService determinePlayersOrderService;
-    private CharacterCreateService characterCreateService;
-    private GameSaveService gameSaveService;
-    private CardServiceFacade cardService;
+    private final GameDeterminePlayersOrderService determinePlayersOrderService;
+    private final CharacterCreateService characterCreateService;
+    private final GameSaveService gameSaveService;
+    private final CardServiceFacade cardService;
 
     @Override
     public GameCreationResponse createNewGame(GameCreationRequest request) {
@@ -49,7 +50,7 @@ public class GameCreateServiceImpl implements GameCreateService {
 
     private void getCardsReady(Game game) {
         logger.info("Getting cards ready...");
-       cardService.getCardsReady(game);
+        cardService.getCardsReady(game);
     }
 
     private void dealStartingCardsToAllPlayers(Game game) {

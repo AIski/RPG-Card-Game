@@ -28,8 +28,11 @@ public class Player {
     @OneToOne(mappedBy = "player")
     private Character gameCharacter;
 
+    @OneToMany
     private List<Card> hand;
     private List<PlayerMove> playerMoves;
+
+    @OneToMany
     private List<Message> messages;
 
 }

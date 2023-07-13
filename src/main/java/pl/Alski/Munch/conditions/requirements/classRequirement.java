@@ -1,5 +1,7 @@
 package pl.Alski.Munch.conditions.requirements;
 
-public interface classRequirement extends Requirement {
+import pl.Alski.Munch.classes.CharacterClass;
 
+public class classRequirement extends Requirement {
+    private CharacterClass requiredClass;
 }

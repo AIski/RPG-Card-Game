@@ -5,36 +5,35 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import pl.Alski.Munch.classes.Class;
+import pl.Alski.Munch.classes.CharacterClass;
 import pl.Alski.Munch.races.Race;
 
-
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Character {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-
     private String name;
 
     @OneToOne
-//    @JoinColumn(name = "player_id")
     private Player player;
 
     private int level;
     private int gold;
     private Sex sex;
-
     private int handSize;
-    private Class characterClass;
+
+    @ManyToOne
+    private CharacterClass characterClass;
+
+    @ManyToOne
     private Race race;
 
+    @OneToOne
     private Equipment equipment;
-
-
 }

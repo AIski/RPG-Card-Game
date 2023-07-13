@@ -1,4 +1,5 @@
 package pl.Alski.Munch.conditions;
 
-public class LevelBelowCondition implements Condition{
+public class LevelBelowCondition extends Condition{
+    private int level;
 }

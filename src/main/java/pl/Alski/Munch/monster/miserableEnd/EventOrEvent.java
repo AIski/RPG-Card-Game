@@ -4,6 +4,6 @@ import pl.Alski.Munch.events.Event;
 
 import java.util.List;
 
-public class EventOrEvent implements MiserableEnd{
+public class EventOrEvent extends MiserableEnd{
     List<Event> events;
 }

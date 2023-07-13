@@ -1,11 +1,13 @@
 package pl.Alski.Munch.service;
 
+import org.springframework.stereotype.Service;
 import pl.Alski.Munch.cards.Card;
 import pl.Alski.Munch.fight.FightProjectedOutcome;
 import pl.Alski.Munch.player.Player;
 
 import java.util.List;
 
+@Service
 public interface PlayerCommunicationService {
     Card askPlayerWhichCard(Long id, List<Card> hand, String s);
 

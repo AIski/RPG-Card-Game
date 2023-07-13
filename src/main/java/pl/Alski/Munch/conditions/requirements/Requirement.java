@@ -1,9 +1,20 @@
 package pl.Alski.Munch.conditions.requirements;
 
+import jakarta.persistence.*;
+import lombok.Data;
 import pl.Alski.Munch.conditions.Condition;
 import pl.Alski.Munch.player.Character;
 import pl.Alski.Munch.items.Item;
 
-public interface Requirement extends Condition {
-    boolean checkRequirement(Character character, Item item);
+@Entity
+@Data
+public abstract class Requirement extends Condition {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Long id;
+
+    private boolean checkRequirement(Character character, Item item){
+        return true;
+    }
 }

@@ -1,4 +1,4 @@
 package pl.Alski.Munch.items.modifiers.fightScore;
 
-public class LevelDoesNotMatterModifier implements FightScoreModifier {
+public class LevelDoesNotMatterModifier extends FightScoreModifier {
 }
