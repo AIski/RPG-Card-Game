@@ -1,12 +1,15 @@
 package pl.Alski.Munch.cards;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="treasure_cards")
+@Data
 @NoArgsConstructor
 public abstract class TreasureCard extends Card {
-
+    private String name;
+    public TreasureCard(String name) {
+        super(name);
+    }
 }

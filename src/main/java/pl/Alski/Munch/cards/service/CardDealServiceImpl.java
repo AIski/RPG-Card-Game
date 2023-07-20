@@ -14,7 +14,7 @@ public class CardDealServiceImpl implements CardDealService {
     @Override
     public <T extends Card> void dealCardToPlayer(T card, Player player) {
         logger.info(card.toString() + " was dealt to " + player.getName());
-        player.getHand().add(card);
+        player.getHand().getCards().add(card);
     }
 
 }

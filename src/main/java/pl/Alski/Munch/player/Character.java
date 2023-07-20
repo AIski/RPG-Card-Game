@@ -5,10 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import pl.Alski.Munch.classes.CharacterClass;
-import pl.Alski.Munch.races.Race;
+import pl.Alski.Munch.classes.ClassCard;
+import pl.Alski.Munch.races.RaceCard;
 
 @Entity
+@Table(name = "CHARACTERS")
 @Data
 @Builder
 @NoArgsConstructor
@@ -16,7 +17,7 @@ import pl.Alski.Munch.races.Race;
 public class Character {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "ID", nullable = false)
     private Long id;
     private String name;
 
@@ -25,14 +26,16 @@ public class Character {
 
     private int level;
     private int gold;
+
+    @Enumerated(EnumType.STRING)
     private Sex sex;
     private int handSize;
 
     @ManyToOne
-    private CharacterClass characterClass;
+    private ClassCard characterClass;
 
     @ManyToOne
-    private Race race;
+    private RaceCard raceCard;
 
     @OneToOne
     private Equipment equipment;

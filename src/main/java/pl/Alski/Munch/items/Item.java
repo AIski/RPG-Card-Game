@@ -8,27 +8,23 @@ import pl.Alski.Munch.conditions.requirements.Requirement;
 import pl.Alski.Munch.items.modifiers.Modifier;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="ITEM_TYPE", discriminatorType = DiscriminatorType.STRING)
 @Data
 @NoArgsConstructor
 public abstract class Item extends TreasureCard {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
-    private String name;
     private int bonus;
     private int goldWorth;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Requirement requirement;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Modifier modifier;
     private boolean isBigItem;
-
-
     public Item(String name, int bonus, int goldWorth, Requirement requirement, Modifier modifier, boolean isBigItem) {
-        this.name = name;
+        super(name);
         this.bonus = bonus;
         this.goldWorth = goldWorth;
         this.requirement = requirement;

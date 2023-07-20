@@ -15,7 +15,7 @@ public class HandValidatorServiceImpl implements HandValidatorService {
     public boolean validateHand(Player player) {
         var playerHandSizeWithModifiers = player.getGameCharacter().getHandSize() + modifierService.getHandModifier(player);
 
-        boolean result = player.getHand().size() <= playerHandSizeWithModifiers;
+        boolean result = player.getHand().getCards().size() <= playerHandSizeWithModifiers;
         if (result) {
             logger.info(player.getName() + "has acceptable amount of cards on his hand.");
         } else {

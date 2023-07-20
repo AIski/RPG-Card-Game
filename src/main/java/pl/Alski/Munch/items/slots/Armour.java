@@ -10,12 +10,8 @@ import pl.Alski.Munch.items.modifiers.Modifier;
 @Entity
 @NoArgsConstructor
 @Data
+@DiscriminatorValue("ARMOUR")
 public class Armour extends Item {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
-
     public Armour(String name, int bonus, int goldWorth, Requirement requirement, Modifier modifier, boolean isBigItem) {
         super(name, bonus, goldWorth, requirement, modifier, isBigItem);
     }

@@ -8,11 +8,8 @@ import pl.Alski.Munch.items.modifiers.Modifier;
 
 @Entity
 @NoArgsConstructor
+@DiscriminatorValue("HELMET")
 public class Helmet extends Item {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
 
     public Helmet(String name, int bonus, int goldWorth, Requirement requirement, Modifier modifier, boolean isBigItem) {
         super(name, bonus, goldWorth, requirement, modifier, isBigItem);

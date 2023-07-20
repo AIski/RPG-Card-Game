@@ -1,16 +1,18 @@
 package pl.Alski.Munch.items.slots;
 
-import jakarta.annotation.sql.DataSourceDefinitions;
-import jakarta.persistence.*;
-import lombok.Data;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+import lombok.NoArgsConstructor;
+import pl.Alski.Munch.conditions.requirements.Requirement;
 import pl.Alski.Munch.items.Item;
+import pl.Alski.Munch.items.modifiers.Modifier;
 
 
 @Entity
-@Data
+@NoArgsConstructor
+@DiscriminatorValue("OTHER")
 public class Other extends Item {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+    public Other(String name, int bonus, int goldWorth, Requirement requirement, Modifier modifier, boolean isBigItem) {
+        super(name, bonus, goldWorth, requirement, modifier, isBigItem);
+    }
 }

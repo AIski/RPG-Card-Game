@@ -2,9 +2,11 @@ package pl.Alski.Munch.cards;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Entity
 @Data
+@NoArgsConstructor
+@Entity
 public abstract class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,4 +15,8 @@ public abstract class Card {
 
     private String name;
     private Boolean headsUp;
+
+    public Card(String name) {
+        this.name = name;
+    }
 }

@@ -30,7 +30,7 @@ public class TourSecondPhaseServiceImpl implements TourSecondPhaseService{
         Player player = tour.getPlayer();
         tour.setPhase(TourPhase.ASK_FOR_TROUBLE);
         tour.setStatus(TourStatus.STARTED);
-        List<Card> monsters = tour.getPlayer().getHand().stream()
+        List<Card> monsters = tour.getPlayer().getHand().getCards().stream()
                 .filter(a -> a instanceof Monster)
                 .collect(Collectors.toList());
         return !monsters.isEmpty() ? possibleFightScenario(tour, player, monsters, game) : noFightScenario(tour);

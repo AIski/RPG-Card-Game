@@ -5,12 +5,14 @@ import lombok.Data;
 
 @Data
 @Entity
-public abstract class CharacterClass {
+@DiscriminatorValue("CLASS")
+public abstract class ClassCard {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    @Column(name = "id", nullable = false)
    private Long id;
 
-   private String className;
+   @Enumerated(EnumType.STRING)
+   private Class classEnum;
 
 }

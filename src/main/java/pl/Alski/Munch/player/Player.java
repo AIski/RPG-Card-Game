@@ -28,8 +28,9 @@ public class Player {
     @OneToOne(mappedBy = "player")
     private Character gameCharacter;
 
-    @OneToMany
-    private List<Card> hand;
+    @OneToOne
+    private Hand hand;
+
     private List<PlayerMove> playerMoves;
 
     @OneToMany
