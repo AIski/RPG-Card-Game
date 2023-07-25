@@ -14,7 +14,4 @@ public abstract class Requirement extends Condition {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    private boolean checkRequirement(Character character, Item item){
-        return true;
-    }
 }

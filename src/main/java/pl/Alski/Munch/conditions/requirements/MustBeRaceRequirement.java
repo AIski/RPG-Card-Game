@@ -12,7 +12,6 @@ import pl.Alski.Munch.races.Race;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MustBeRaceRequirement extends RaceRequirement {
-
     @Column(name="RACE")
     @Enumerated(EnumType.STRING)
     private Race race;

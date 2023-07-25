@@ -19,24 +19,32 @@ public class Character {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
     private Long id;
+
+    @Column(name = "NAME", nullable = false)
     private String name;
 
     @OneToOne
     private Player player;
 
+    @Column(name = "LEVEL", nullable = false)
     private int level;
-    private int gold;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "SEX", nullable = false)
     private Sex sex;
+
+    @Column(name = "HAND_SIZE", nullable = false)
     private int handSize;
 
-    @ManyToOne
+    @OneToOne
+    @JoinColumn(name = "CLASS_ID")
     private ClassCard characterClass;
 
-    @ManyToOne
+    @OneToOne
+    @JoinColumn(name = "RACE_ID")
     private RaceCard raceCard;
 
     @OneToOne
+    @JoinColumn(name="EQUIPMENT_ID")
     private Equipment equipment;
 }

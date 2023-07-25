@@ -2,6 +2,7 @@ package pl.Alski.Munch.items.factory;
 
 import org.springframework.stereotype.Service;
 import pl.Alski.Munch.conditions.requirements.Requirement;
+import pl.Alski.Munch.items.bonus.Bonus;
 import pl.Alski.Munch.items.modifiers.Modifier;
 import pl.Alski.Munch.items.slots.Other;
 import pl.Alski.Munch.items.slots.TwoHandedWeapon;
@@ -10,7 +11,7 @@ import pl.Alski.Munch.items.slots.TwoHandedWeapon;
 public class OtherItemFactory implements ItemFactory {
 
     @Override
-    public Other createItem(String name, int bonus, int goldWorth, Requirement requirement, Modifier modifier, boolean isBigItem) {
+    public Other createItem(String name, Bonus bonus, int goldWorth, Requirement requirement, Modifier modifier, boolean isBigItem) {
         return new Other(
                 name,
                 bonus,

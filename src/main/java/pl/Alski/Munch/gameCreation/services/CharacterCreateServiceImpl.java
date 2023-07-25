@@ -24,7 +24,6 @@ public class CharacterCreateServiceImpl implements CharacterCreateService {
                 .sex(player.getSex())
                 .handSize(5)
                 .level(1)
-                .gold(0)
                 .player(player)
                 .build();
         player.setGameCharacter(character);

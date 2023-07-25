@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import pl.Alski.Munch.conditions.requirements.Requirement;
 import pl.Alski.Munch.items.Item;
+import pl.Alski.Munch.items.bonus.Bonus;
 import pl.Alski.Munch.items.modifiers.Modifier;
 
 @Entity
@@ -12,7 +13,7 @@ import pl.Alski.Munch.items.modifiers.Modifier;
 @NoArgsConstructor
 @DiscriminatorValue("TWO_HANDED_WEAPON")
 public class TwoHandedWeapon extends Item {
-    public TwoHandedWeapon(String name, int bonus, int goldWorth, Requirement requirement, Modifier modifier, boolean isBigItem) {
+    public TwoHandedWeapon(String name, Bonus bonus, int goldWorth, Requirement requirement, Modifier modifier, boolean isBigItem) {
         super(name, bonus, goldWorth, requirement, modifier, isBigItem);
     }
 

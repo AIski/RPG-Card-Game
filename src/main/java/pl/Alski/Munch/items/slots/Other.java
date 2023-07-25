@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import lombok.NoArgsConstructor;
 import pl.Alski.Munch.conditions.requirements.Requirement;
 import pl.Alski.Munch.items.Item;
+import pl.Alski.Munch.items.bonus.Bonus;
 import pl.Alski.Munch.items.modifiers.Modifier;
 
 
@@ -12,7 +13,7 @@ import pl.Alski.Munch.items.modifiers.Modifier;
 @NoArgsConstructor
 @DiscriminatorValue("OTHER")
 public class Other extends Item {
-    public Other(String name, int bonus, int goldWorth, Requirement requirement, Modifier modifier, boolean isBigItem) {
+    public Other(String name, Bonus bonus, int goldWorth, Requirement requirement, Modifier modifier, boolean isBigItem) {
         super(name, bonus, goldWorth, requirement, modifier, isBigItem);
     }
 }

@@ -13,10 +13,14 @@ public abstract class Card {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @Column(name = "NAME", nullable = false)
     private String name;
+
+    @Column(name = "VISIBLE", nullable = false)
     private Boolean headsUp;
 
     public Card(String name) {
         this.name = name;
+        this.headsUp = false;
     }
 }

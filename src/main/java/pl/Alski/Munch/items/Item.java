@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import pl.Alski.Munch.cards.TreasureCard;
 import pl.Alski.Munch.conditions.requirements.Requirement;
+import pl.Alski.Munch.items.bonus.Bonus;
 import pl.Alski.Munch.items.modifiers.Modifier;
 
 @Entity
@@ -14,17 +15,22 @@ import pl.Alski.Munch.items.modifiers.Modifier;
 @NoArgsConstructor
 public abstract class Item extends TreasureCard {
 
-    private int bonus;
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Bonus bonus;
+
+
+    private String name;
     private int goldWorth;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Requirement requirement;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Modifier modifier;
     private boolean isBigItem;
-    public Item(String name, int bonus, int goldWorth, Requirement requirement, Modifier modifier, boolean isBigItem) {
+    public Item(String name, Bonus bonus, int goldWorth, Requirement requirement, Modifier modifier, boolean isBigItem) {
         super(name);
+        this.name=name;
         this.bonus = bonus;
         this.goldWorth = goldWorth;
         this.requirement = requirement;

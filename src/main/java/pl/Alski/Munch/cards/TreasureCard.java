@@ -9,7 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public abstract class TreasureCard extends Card {
     private String name;
+
     public TreasureCard(String name) {
         super(name);
+        this.name = name;
     }
 }

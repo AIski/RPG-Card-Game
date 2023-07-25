@@ -17,18 +17,28 @@ public class Player {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "ID", nullable = false)
     private Long id;
 
+    @Column(name = "NAME", nullable = false)
     private String name;
+
+    @Column(name = "EMAIL", nullable = false)
     private String email;
+
+    @Column(name = "PASSWORD", nullable = false)
     private String password;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "SEX", nullable = false)
     private Sex sex;
 
     @OneToOne(mappedBy = "player")
+    @JoinColumn(name="EQUIPMENT_ID", referencedColumnName = "id")
     private Character gameCharacter;
 
     @OneToOne
+    @JoinColumn(name="EQUIPMENT_ID", referencedColumnName = "id")
     private Hand hand;
 
     private List<PlayerMove> playerMoves;
