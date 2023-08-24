@@ -3,7 +3,7 @@ package pl.Alski.Munch.player;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import pl.Alski.Munch.cards.Card;
+import pl.Alski.Munch.entity.Game;
 import pl.Alski.Munch.entity.Message;
 import pl.Alski.Munch.moves.PlayerMove;
 
@@ -45,5 +45,12 @@ public class Player {
 
     @OneToMany
     private List<Message> messages;
+
+
+    @ManyToOne
+    @JoinTable(name = "GAME_PLAYERS",
+    joinColumns = @JoinColumn(name="PLAYER_ID"),
+            inverseJoinColumns = @JoinColumn(name="GAME_ID"))
+    private Game currentGame;
 
 }

@@ -4,10 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import pl.Alski.Munch.cards.DoorCard;
 import pl.Alski.Munch.cards.TreasureCard;
-import pl.Alski.Munch.gameCreation.GameMasterService;
-
 import pl.Alski.Munch.player.Player;
-import pl.Alski.Munch.cards.service.CardServiceFacadeImpl;
 
 import java.util.List;
 import java.util.Stack;
@@ -21,8 +18,7 @@ public class Game {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @OneToMany
-    @JoinColumn(name = "player_id")
+    @OneToMany(mappedBy = "currentGame")
     private List<Player> players;
 
     private Stack<DoorCard> doorCardsStack;
