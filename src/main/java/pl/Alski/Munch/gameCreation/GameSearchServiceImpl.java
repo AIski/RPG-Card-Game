@@ -6,7 +6,8 @@ import pl.Alski.Munch.moves.PlayerDetails;
 @Service
 public class GameSearchServiceImpl implements GameSearchService{
     @Override
-    public void joinGameSearchQueue(PlayerDetails playerDetails) {
-
+    public boolean joinGameSearchQueue(PlayerDetails playerDetails) {
+        ....
+        //TODO: FINISH THAT
     }
 }

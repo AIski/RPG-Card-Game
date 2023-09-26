@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/player/move")
 @AllArgsConstructor
-public class PlayerMoveController {
+public class MoveController {
     private PlayerPossibleMovesService possibleMoves;
     private PlayerMoveService moveService;
 
