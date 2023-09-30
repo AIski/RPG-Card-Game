@@ -1,0 +1,36 @@
+package pl.Alski.Munch.logic.game;
+
+import jakarta.persistence.*;
+import lombok.Data;
+import pl.Alski.Munch.logic.cards.doorCard.DoorCard;
+import pl.Alski.Munch.logic.cards.treasureCard.TreasureCard;
+import pl.Alski.Munch.logic.player.Player;
+
+import java.util.List;
+import java.util.Stack;
+
+@Entity
+@Data
+@Table(name = "games")
+public class Game {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Long id;
+
+    @OneToMany(mappedBy = "currentGame")
+    private List<Player> players;
+
+    private Stack<DoorCard> doorCardsStack;
+    private Stack<TreasureCard> treasureCardsStack;
+    private Stack<DoorCard> usedDoorCardsStack;
+    private Stack<TreasureCard> usedTreasureCardsStack;
+
+    private Boolean fightMode = false;
+    private Boolean isFinished = false;
+
+    @OneToOne
+    @JoinColumn(name = "winner_id")
+    private Player winner;
+
+}

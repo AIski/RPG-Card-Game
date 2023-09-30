@@ -3,11 +3,11 @@ package pl.Alski.Munch.controller;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.Alski.Munch.fight.service.PlayerPossibleMovesService;
-import pl.Alski.Munch.moves.CardMove;
-import pl.Alski.Munch.moves.PlayerDetails;
-import pl.Alski.Munch.moves.PlayerMove;
-import pl.Alski.Munch.moves.PlayerMoveService;
+import pl.Alski.Munch.logic.moves.service.PlayerPossibleMovesService;
+import pl.Alski.Munch.logic.moves.CardMove;
+import pl.Alski.Munch.logic.moves.PlayerDetails;
+import pl.Alski.Munch.logic.moves.PlayerMove;
+import pl.Alski.Munch.logic.moves.service.PlayerMoveService;
 
 import java.util.List;
 

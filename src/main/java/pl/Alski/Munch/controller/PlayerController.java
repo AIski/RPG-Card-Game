@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.Alski.Munch.dto.PlayerCreationRequest;
-import pl.Alski.Munch.service.Facade.PlayerServiceFacade;
+import pl.Alski.Munch.logic.player.service.PlayerServiceFacade;
 
 @RestController
 @RequestMapping("/api/v1/player")

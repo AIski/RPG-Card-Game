@@ -2,8 +2,8 @@ package pl.Alski.Munch.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import pl.Alski.Munch.entity.Game;
-import pl.Alski.Munch.player.Sex;
+import pl.Alski.Munch.logic.game.Game;
+import pl.Alski.Munch.logic.player.Sex;
 
 @Data
 @AllArgsConstructor

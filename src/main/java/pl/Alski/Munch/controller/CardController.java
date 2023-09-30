@@ -6,8 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.Alski.Munch.cards.TreasureCard;
-import pl.Alski.Munch.cards.service.CardGetAllTreasureCardsService;
+import pl.Alski.Munch.logic.cards.treasureCard.TreasureCard;
+import pl.Alski.Munch.logic.cards.service.service.CardGetAllTreasureCardsService;
 
 import java.util.List;
 

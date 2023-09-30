@@ -5,10 +5,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import pl.Alski.Munch.dto.GameDetails;
-import pl.Alski.Munch.gameCreation.GameCreationRequest;
-import pl.Alski.Munch.gameCreation.GameCreationResponse;
-import pl.Alski.Munch.moves.PlayerDetails;
-import pl.Alski.Munch.service.Facade.GameServiceFacade;
+import pl.Alski.Munch.logic.game.gameCreation.GameCreationRequest;
+import pl.Alski.Munch.logic.game.gameCreation.GameCreationResponse;
+import pl.Alski.Munch.logic.moves.PlayerDetails;
+import pl.Alski.Munch.logic.game.service.GameServiceFacade;
 
 @RestController
 @RequestMapping("/api/v1/game")
