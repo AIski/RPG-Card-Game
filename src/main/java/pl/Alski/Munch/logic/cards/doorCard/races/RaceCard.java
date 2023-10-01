@@ -1,25 +1,24 @@
 package pl.Alski.Munch.logic.cards.doorCard.races;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import pl.Alski.Munch.logic.cards.doorCard.DoorCard;
 
-@Data
 @Entity
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@DiscriminatorValue("RACE")
+@Table(name="RACE")
 public abstract class RaceCard extends DoorCard {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
 
-    @Column(name="RACE")
     @Enumerated(EnumType.STRING)
+    @Column(name="RACE")
     private Race race;
+
+    public RaceCard(String name) {
+        super(name);
+    }
 
 
 }

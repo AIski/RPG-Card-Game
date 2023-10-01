@@ -11,7 +11,7 @@ import pl.Alski.Munch.logic.fight.Fight;
 import pl.Alski.Munch.logic.player.Player;
 import pl.Alski.Munch.logic.condition.service.ConditionService;
 import pl.Alski.Munch.logic.dice.DiceService;
-import pl.Alski.Munch.logic.cards.modifier.ModifierDiceService;
+import pl.Alski.Munch.logic.cards.modifier.modifiers.dice.ModifierDiceService;
 
 
 @Service

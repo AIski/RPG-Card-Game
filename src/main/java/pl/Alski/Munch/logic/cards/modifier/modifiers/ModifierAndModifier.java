@@ -4,12 +4,13 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pl.Alski.Munch.logic.cards.modifier.Modifier;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ModifierAndModifier extends Modifier{
+public class ModifierAndModifier extends Modifier {
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "FIRST_MODIFIER_ID")
     private Modifier firstModifier;

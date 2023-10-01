@@ -1,43 +1,46 @@
 package pl.Alski.Munch.logic.player.equipment;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import pl.Alski.Munch.logic.player.equipment.item.slots.*;
+import lombok.Getter;
+import lombok.Setter;
+import pl.Alski.Munch.logic.player.equipment.item.ItemSlot;
+import pl.Alski.Munch.logic.player.equipment.item.ItemType;
 
+import java.util.ArrayList;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
+@Table(name="EQUIPMENT")
 @Entity
 public class Equipment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "ID", nullable = false)
     private Long id;
 
     @OneToMany
-    private OneHandedWeapon[] singleHandedWeapons = new OneHandedWeapon[2];
+    @JoinTable(name = "EQUIPMENT_ITEM_SLOT",
+            joinColumns = @JoinColumn(name = "EQUIPMENT_ID"),
+            inverseJoinColumns = @JoinColumn(name = "ITEM_SLOT_ID")
+    )
+    private List<ItemSlot> itemSlots;
 
-    @OneToOne
-    @JoinColumn(name = "TWO_HANDED_WEAPON_ID")
-    private TwoHandedWeapon twoHandedWeapon;
+    public Equipment() {
+        List<ItemSlot> itemSlots = new ArrayList<>();
+        itemSlots.add(new ItemSlot(ItemType.ARMOUR));
+        itemSlots.add(new ItemSlot(ItemType.BOOTS));
+        itemSlots.add(new ItemSlot(ItemType.HELMET));
+        itemSlots.add(new ItemSlot(ItemType.ONE_HANDED_WEAPON));
+        itemSlots.add(new ItemSlot(ItemType.ONE_HANDED_WEAPON));
+        itemSlots.add(new ItemSlot(ItemType.OTHER));
+        itemSlots.add(new ItemSlot(ItemType.OTHER));
+        itemSlots.add(new ItemSlot(ItemType.OTHER));
+        itemSlots.add(new ItemSlot(ItemType.OTHER));
+        itemSlots.add(new ItemSlot(ItemType.OTHER));
+        itemSlots.add(new ItemSlot(ItemType.SIDEKICK));
+        itemSlots.add(new ItemSlot(ItemType.TWO_HANDED_WEAPON));
+        this.itemSlots = itemSlots;
+    }
 
-    @OneToOne
-    @JoinColumn(name = "HELMET_ID")
-    private Helmet helmet;
-
-    @OneToOne
-    @JoinColumn(name = "ARMOUR_ID")
-    private Armour armour;
-
-    @OneToOne
-    @JoinColumn(name = "BOOTS_ID")
-    private Boots boots;
-
-    @OneToMany
-    @JoinColumn(name = "OTHERS_ID")
-    private List<Other> others;
-    
-    @OneToOne
-    @JoinColumn(name = "SIDEKICK_ID")
-    private Sidekick sidekick;
 }

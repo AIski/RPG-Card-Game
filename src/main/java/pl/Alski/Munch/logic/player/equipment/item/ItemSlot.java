@@ -1,15 +1,26 @@
 package pl.Alski.Munch.logic.player.equipment.item;
 
-import lombok.AllArgsConstructor;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
-
-
-@AllArgsConstructor
+@Entity
+@Table(name="ITEM_SLOT")
+@Getter
+@Setter
+@RequiredArgsConstructor
 public class ItemSlot {
-    private final ItemType requiredType;
-    private Item item;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID", nullable = false)
+    private Long id;
 
-    public ItemSlot(ItemType requiredType) {
-        this.requiredType = requiredType;
-    }
+    @Column(name = "ITEM_TYPE")
+    @Enumerated(value = EnumType.STRING)
+    private final ItemType requiredType;
+
+    @OneToOne
+    @JoinColumn(name="ITEM_ID")
+    private Item item;
 }

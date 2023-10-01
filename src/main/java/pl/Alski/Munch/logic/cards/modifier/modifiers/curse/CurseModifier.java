@@ -1,6 +1,6 @@
 package pl.Alski.Munch.logic.cards.modifier.modifiers.curse;
 
-import pl.Alski.Munch.logic.cards.modifier.modifiers.Modifier;
+import pl.Alski.Munch.logic.cards.modifier.Modifier;
 
 public abstract class CurseModifier extends Modifier {
 

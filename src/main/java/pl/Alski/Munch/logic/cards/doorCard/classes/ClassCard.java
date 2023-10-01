@@ -4,20 +4,15 @@ import jakarta.persistence.*;
 import lombok.*;
 import pl.Alski.Munch.logic.cards.doorCard.DoorCard;
 
+@Entity
 @Getter
 @Setter
-@ToString
-@RequiredArgsConstructor
-@Entity
-@DiscriminatorValue("CLASS")
+@Table(name="CLASS_CARD")
 @NoArgsConstructor
-public abstract class ClassCard extends DoorCard {
-//   @Id
-//   @GeneratedValue(strategy = GenerationType.IDENTITY)
-//   @Column(name = "id", nullable = false)
-//   private Long id;
+public class ClassCard extends DoorCard {
 
    @Enumerated(EnumType.STRING)
+   @Column(name="CLASS_NAME")
    private Class classEnum;
 
    public ClassCard(String name) {
