@@ -1,4 +1,4 @@
-package pl.Alski.Munch.logic.game.gameCreation.services;
+package pl.Alski.Munch.logic.game.service;
 
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
@@ -6,10 +6,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import pl.Alski.Munch.logic.cards.service.CardServiceFacade;
 import pl.Alski.Munch.logic.game.Game;
-import pl.Alski.Munch.logic.game.gameCreation.GameCreationRequest;
-import pl.Alski.Munch.logic.game.gameCreation.GameCreationResponse;
+import pl.Alski.Munch.logic.game.GameCreationRequest;
+import pl.Alski.Munch.logic.game.GameCreationResponse;
 import pl.Alski.Munch.logic.player.Player;
-import pl.Alski.Munch.logic.game.service.GameSaveService;
 import pl.Alski.Munch.logic.tour.phase.tourPhaseService.TourFirstPhaseServiceImpl;
 
 import java.util.List;
@@ -28,7 +27,7 @@ public class GameCreateServiceImpl implements GameCreateService {
     public GameCreationResponse createNewGame(GameCreationRequest request) {
         logger.info("Creating new game...");
         Game game = new Game();
-        var players = determinePlayersOrderService.get(request.getPlayers());
+        var players = determinePlayersOrderService.getOrder(request.getPlayers());
         createCharacters(players);
         game.setPlayers(players);
         getCardsReady(game);

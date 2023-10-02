@@ -1,4 +1,4 @@
-package pl.Alski.Munch.logic.game.gameCreation.services;
+package pl.Alski.Munch.logic.game.service;
 
 
 import lombok.AllArgsConstructor;

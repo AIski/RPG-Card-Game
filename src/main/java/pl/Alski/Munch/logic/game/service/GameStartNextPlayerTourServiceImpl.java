@@ -1,4 +1,4 @@
-package pl.Alski.Munch.logic.game.gameCreation;
+package pl.Alski.Munch.logic.game.service;
 
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
@@ -14,15 +14,15 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class GameMasterServiceImpl implements GameMasterService {
-    private final static Logger logger = LoggerFactory.getLogger(GameMasterServiceImpl.class);
+public class GameStartNextPlayerTourServiceImpl implements GameStartNextPlayerTourService {
+    private final static Logger logger = LoggerFactory.getLogger(GameStartNextPlayerTourServiceImpl.class);
     private QueueService queueService;
     private PlayerPossibleMovesService playerMovesService;
 
     @Override
     public void startNextPlayerTour(Game game) {
         while (!game.getIsFinished()) {
-            logger.info("Inside GameMasterService.startNextPlayerTour()");
+            logger.info("Inside GameStartNextPlayerTourService.startNextPlayerTour()");
             for (int i = 0; i < game.getPlayers().size(); i++) {
                 var tempPlayer = queueService.getNextPlayerInQueue(game);
                 playerMovesService.setPlayerMoves(tempPlayer, List.of(PlayerMove.START_TOUR));

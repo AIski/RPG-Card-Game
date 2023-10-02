@@ -33,15 +33,15 @@ public interface TourService {
 
     ///monster fight:
     //            // if you can solo it
-    //                // if you killed it, you get a level ( or two, deppending on monster)
-    //                // if you killed it, you get a loot ( according to monster card info)
+    //                // if you killed it, you getOrder a level ( or two, deppending on monster)
+    //                // if you killed it, you getOrder a loot ( according to monster card info)
     //            // if you can't kill it by your own, you ask for help
     //                //if someone wants to help, you fight the monster together,
-    //                    // if you killed it, you get a level ( or two, deppending on monster)
-    //                    // person helping might get promotion on special occasions (ex. elf )
-    //                   // if you killed it, you get a loot ( according to monster card info)
+    //                    // if you killed it, you getOrder a level ( or two, deppending on monster)
+    //                    // person helping might getOrder promotion on special occasions (ex. elf )
+    //                   // if you killed it, you getOrder a loot ( according to monster card info)
     //            // if you lose, you have to escape
-    //            // if you escape, you dont get loot or level
+    //            // if you escape, you dont getOrder loot or level
     //            // if you fail to escape, you face the monster miserable end.
 
 }

@@ -1,4 +1,4 @@
-package pl.Alski.Munch.logic.game.gameCreation;
+package pl.Alski.Munch.logic.game;
 
 import lombok.Builder;
 import lombok.Data;

@@ -28,7 +28,7 @@ public class TourFourthPhaseServiceImpl implements TourFourthPhaseService{
     // if there are players with same, lowest level, you split the cards, as fair as possible.
     // if you are the lowest level, throw away extra cards.
 
-    //TODO for later: players with lowest level should get the cards, as fair as possible
+    //TODO for later: players with lowest level should getOrder the cards, as fair as possible
     // if player is lowest level, cards should be discarded.
 
     public Tour playFourthPhase(Tour tour, Game game){
